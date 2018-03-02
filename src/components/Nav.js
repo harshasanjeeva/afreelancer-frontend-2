@@ -3,7 +3,7 @@ import { Button, Collapse, Navbar, NavbarToggler, DropdownMenu, DropdownItem,Dro
 import { Route, withRouter } from 'react-router-dom';
 // import text from './../images/1.svg';
 // import logo from './../images/2.svg';
-// import Sigin from './Signin'
+import Sigin from './Signin'
 import Home from './Home';
 import Projects from './Projects';
 
@@ -25,16 +25,32 @@ class NavHeader extends Component {
     return (
         <div>
         <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand href="/">freelancer</NavbarBrand>
+          <Nav className="ml-auto" navbar>
+          <NavItem>
+          <NavLink href="/projects/">Hire</NavLink>
+          </NavItem>
+          <NavItem>
+          <NavLink href="/projects/">Work</NavLink>
+          </NavItem>
+          <NavItem>
+          <NavLink href="/projects/">Know More</NavLink>
+          </NavItem>
+          </Nav>
+          
           <NavbarToggler onClick={this.toggle} />
+          
+          
+          
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/projects/">Projects</NavLink>
+                <NavLink href="/signin/">Log-in</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
-              </NavItem>
+              <NavLink href="/projects/">Sign-Up</NavLink>
+            </NavItem>
+
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   Options

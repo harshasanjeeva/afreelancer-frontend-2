@@ -11,15 +11,17 @@ class Root extends Component {
   render() {
     return (
       <div >
-        <Switch>
-            <Route exact path='/' component={Home}/>
-            <Route path='/work' component={Work}/>
-            <Route path='/projects' component={Projects}/>
-            <Route path='/Signin' component={Signin}/>
-        </Switch>
+
       </div>
     );
   }
 }
 
+
+        // <Switch>
+        //     <Route exact path='/' component={Home}/>
+        //     <Route path='/work' component={Work}/>
+        //     <Route path='/projects' component={Projects}/>
+        //     <Route path='/Signin' component={Signin}/>
+        // </Switch>
 export default Root;

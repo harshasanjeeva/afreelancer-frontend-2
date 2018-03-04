@@ -45,7 +45,8 @@ class NavHeader extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/signin/">Log-in</NavLink>
+                <Sigin buttonLabel="Signin" />
+                
               </NavItem>
               <NavItem>
               <NavLink href="/projects/">Sign-Up</NavLink>

@@ -1,121 +1,86 @@
-const api = 'http://localhost:3001'
+const api = process.env.REACT_APP_CONTACTS_API_URL || 'http://localhost:3001'
 
 const headers = {
     'Accept': 'application/json'
 };
 
-export const signup = (payload) =>  
-    fetch(`${api}/signup`, {
+export const signup = (payload) =>
+    fetch(`${api}/operations/signup`, {
         method: 'POST',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
         },
-        credentials:'include',
         body: JSON.stringify(payload)
-    }).then((response) => response.json())
+    }).then(response => response.json())
+        .then(response => {
 
-    .then((responseJson) => {
-        return responseJson;
-    })
+            console.log(payload);
+            return response;
+        })
         .catch(error => {
-            console.log("Sign up Falied with error : "+error);
+            console.log("This is error");
             return error;
-});
+        });
 
 
-export const signin = (payload) =>  
-    fetch(`${api}/signin`, {
+export const login = (payload) =>
+    fetch(`${api}/users/login`, {
         method: 'POST',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
         },
-        credentials:'include',
         body: JSON.stringify(payload)
-    }).then((response) => response.json())
-
-    .then((responseJson) => {
-        return responseJson;
-    })
+    }).then(response => response.json())
+        .then(response => {
+            console.log("payload");
+            console.log(response.username+" "+response.password);
+            
+            return response;
+        })
         .catch(error => {
-            console.log("Sign in Falied with error : "+error);
+            console.log("This is error");
             return error;
-});
-
-export const signout = () =>  
-    fetch(`${api}/signout`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        credentials:'include'
-    }).then((response) => response.json())
-
-    .then((responseJson) => {
-        return responseJson;
-    })
-        .catch(error => {
-            console.log("Sign in Falied with error : "+error);
-            return error;
-});
+        });
 
 
-export const userPersonalInfo = (payload) =>  
-    fetch(`${api}/userPersonalInfo`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        credentials:'include',
-        body: JSON.stringify(payload)
-    }).then((response) => response.json())
+// export const signup = (payload) =>  
+//     fetch(`${api}/signup`, {
+//         method: 'POST',
+//         headers: {
+//             ...headers,
+//             'Content-Type': 'application/json'
+//         },
+//         credentials:'include',
+//         body: JSON.stringify(payload)
+//     }).then((response) => response.json())
 
-    .then((responseJson) => {
-        return responseJson;
-    })
-        .catch(error => {
-            console.log("Updating user Personal info failed with error : "+error);
-            return error;
-});
+//     .then((responseJson) => {
+//         return responseJson;
+//     })
+//         .catch(error => {
+//             console.log("Sign up Falied with error : "+error);
+//             return error;
+// });
 
 
-export const userEduInfo = (payload) =>  
-    fetch(`${api}/userEduInfo`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        credentials:'include',
-        body: JSON.stringify(payload)
-    }).then((response) => response.json())
+// export const signin = (payload) =>  
+//     fetch(`${api}/signin`, {
+//         method: 'POST',
+//         headers: {
+//             ...headers,
+//             'Content-Type': 'application/json'
+//         },
+//         credentials:'include',
+//         body: JSON.stringify(payload)
+//     }).then((response) => response.json())
 
-    .then((responseJson) => {
-        return responseJson;
-    })
-        .catch(error => {
-            console.log("Updating user Education info failed with error : "+error);
-            return error;
-});
+//     .then((responseJson) => {
+//         return responseJson;
+//     })
+//         .catch(error => {
+//             console.log("Sign in Falied with error : "+error);
+//             return error;
+// });
 
-export const userIntInfo = (payload) =>  
-    fetch(`${api}/userIntInfo`, {
-        method: 'POST',
-        headers: {
-            ...headers,
-            'Content-Type': 'application/json'
-        },
-        credentials:'include',
-        body: JSON.stringify(payload)
-    }).then((response) => response.json())
-
-    .then((responseJson) => {
-        return responseJson;
-    })
-        .catch(error => {
-            console.log("Updating user Interest info failed with error : "+error);
-            return error;
-});

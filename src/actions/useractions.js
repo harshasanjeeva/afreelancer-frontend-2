@@ -58,9 +58,9 @@ export function signin(resData) {
 console.log("hiiiiiiiiii",resData)
 	return {
 		type: USER_SIGNIN,
-		msg:"Harsha",
-		user: resData.email
-
+		msg:resData.message,
+		username: resData.username,
+		email: resData.email
 	}
 	
 }

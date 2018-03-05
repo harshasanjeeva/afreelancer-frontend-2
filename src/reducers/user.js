@@ -49,14 +49,14 @@ const user = (state = initialState, action) => {
 
          case USER_SIGNIN :
          console.log("action--->reducerascas")
-                  if(action.user) {
-                    console.log("action--->reducer",action.user)
+                  if(action.username) {
+                    console.log("action--->reducer",action)
                     return {
                        ...state,
                        "user":{
                                 "basic": "harsha",
-                                "pinfo" : action.user,
-                                "eduinfo" : "harsha",
+                                "username" : action.username,
+                                "email" : action.email,
                                 "loggedin" : true,
                                 "starred" : "harsha",
                                 "activity" : "harsha",

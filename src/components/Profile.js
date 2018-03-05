@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import NavHeader from './NavHeader'
+import NavHeader from './NavHeader';
+import { Route, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 import { Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import NavHeaderLogin from './NavHeaderLogin';
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +22,7 @@ class Profile extends Component {
       console.log("userrssss",this.props.users)
     return (
         <div >
-        <NavHeader />
+      
         <Card style={{ 
             
             width: 300,
@@ -30,12 +33,13 @@ class Profile extends Component {
             
             width: 150,
             margin: 'auto',
-            height: 150,
+            height: 240,
             borderRadius: 50}}/>
             <hr />
             <CardBody>
             <CardTitle>User Profile Page</CardTitle>
-            <CardSubtitle>{this.props.users}</CardSubtitle>
+            <Label>Username:</Label><CardSubtitle>{this.props.username}</CardSubtitle>
+            <Label>Email:</Label><CardSubtitle>{this.props.email}</CardSubtitle>
             <CardText></CardText>
             </CardBody>
             <br />
@@ -52,8 +56,9 @@ const mapStateToProps = (user) => {
       
     //   user.user.user.signinmsg = "";
       return {
-          users: user.user.user.pinfo
+          username: user.user.user.username,
+          email: user.user.user.email
       };//{msg};
 //    }
   }
-export default connect(mapStateToProps)(Profile);
+export default  withRouter(connect(mapStateToProps)(Profile));

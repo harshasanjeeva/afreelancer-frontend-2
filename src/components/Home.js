@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <div >
       <NavHeader />
-        <h3>Home</h3>
+        <h3></h3>
       </div>
     );
   }

@@ -26,11 +26,19 @@ class Signin extends Component {
   navigate() {
    // console.log("im her in signi=up herehreqhroeijos")
     history.push('/profile');
+    // this.setState({
+    //   modal: false,
+    //   "email":"",
+    //   "password":""
+    // });
   }
 
   render() {
     const dispatch = this.props.dispatch;
+
     if(this.props.isLoggedIn){
+      console.log("I am here in signin page navigae")
+      this.toggle;
       this.navigate();
     }
 
@@ -111,6 +119,6 @@ const mapStateToProps = (user) => {
 // }
 
 //const StartContainer = connect(mapStateToProp s,mapDispatchToProps)(Signin);
-export default connect(mapStateToProps,mapDispatchToProps)(Signin);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Signin));
 
 //export default (Signin);

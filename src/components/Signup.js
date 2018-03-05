@@ -28,18 +28,18 @@ class Signup extends Component {
       "signupafter":false
     });
   }
-  navigate() {  
-  this.toggle()
+  // navigate() {  
 
 
-  }
+
+  // }
 
   render() {
     const dispatch = this.props.dispatch;
-    if(this.props.isLoggedIn){
-      console.log("came here")
-      this.navigate();
-    }
+    // if(this.props.isLoggedIn){
+    //   console.log("came here")
+    //   this.navigate();
+    // }
 
     return (
       <div>

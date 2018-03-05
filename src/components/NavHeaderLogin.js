@@ -10,7 +10,7 @@ import Work from './Work';
 import Projects from './Projects';
 import {connect} from 'react-redux';
 
-class NavHeader extends Component {
+class NavHeaderLogin extends Component {
     constructor(props) {
         super(props);
     
@@ -45,7 +45,7 @@ class NavHeader extends Component {
           
           
           
-      
+          {!this.props.islogin ?
        
             
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -79,7 +79,7 @@ class NavHeader extends Component {
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
-    
+          : <p></p>}
      
         </Navbar>
       </div>
@@ -97,4 +97,4 @@ const mapStateToProps = (user) => {
 
 }
 
-export default withRouter(connect(mapStateToProps)(NavHeader));
+export default withRouter(connect(mapStateToProps)(NavHeaderLogin));

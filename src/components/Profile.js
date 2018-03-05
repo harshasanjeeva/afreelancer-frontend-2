@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavHeader from './NavHeader'
 import {connect} from 'react-redux';
 import { Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -17,18 +18,29 @@ class Profile extends Component {
   render() {
       console.log("userrssss",this.props.users)
     return (
-        <div className="App">
-        <NavHeader />
         <div >
-        <img src={require('./image1.png')} alt="avatar" style={{ 
+        <NavHeader />
+        <Card style={{ 
+            
+            width: 300,
+            margin: 'auto',
+            height: 350,
+}}>
+        <CardImg top width="100%" align="middle" src={require('./image1.png')} alt="Card image cap" style={{ 
+            
             width: 150,
+            margin: 'auto',
             height: 150,
             borderRadius: 50}}/>
+            <hr />
+            <CardBody>
+            <CardTitle>User Profile Page</CardTitle>
+            <CardSubtitle>{this.props.users}</CardSubtitle>
+            <CardText></CardText>
+            </CardBody>
             <br />
-            <span>Hello</span>
-            <br />
-            <Label>Name: </Label><h4>{this.props.users}</h4>
-        </div>
+    
+        </Card>
         </div>
     );
   }

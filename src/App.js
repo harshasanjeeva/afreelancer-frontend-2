@@ -7,7 +7,11 @@ import history from '../src/components/History';
 import Home from '../src/components/Home';
 import Work from '../src/components/Work';
 import Projects from '../src/components/Projects';
+import LandingPage from '../src/components/LandingPage';
 import {Route, Switch} from 'react-router-dom';
+import Profile from '../src/components/Profile';
+
+
 class App extends Component {
   render() {
     return (
@@ -17,6 +21,8 @@ class App extends Component {
         <Route exact path='/' component={Home}/>
         <Route path='/work' component={Work}/>
         <Route path='/projects' component={Projects}/>
+        <Route exact path='/landingpage' component={LandingPage}/>
+        <Route exact path='/profile' component={Profile}/>
     </Switch>
         </Router>
       </div>

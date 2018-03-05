@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import Work from './Work';
 import Projects from './Projects';
-import NavHeader from './Nav'
 import Home from './Home';
 import Signin from './Signin';
 import {Route, Switch} from 'react-router-dom';

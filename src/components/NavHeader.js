@@ -4,7 +4,9 @@ import { Route, withRouter } from 'react-router-dom';
 // import text from './../images/1.svg';
 // import logo from './../images/2.svg';
 import Sigin from './Signin'
+import Signup from './Signup'
 import Home from './Home';
+import Work from './Work';
 import Projects from './Projects';
 
 class NavHeader extends Component {
@@ -28,10 +30,10 @@ class NavHeader extends Component {
           <NavbarBrand href="/">freelancer</NavbarBrand>
           <Nav className="ml-auto" navbar>
           <NavItem>
-          <NavLink href="/projects/">Hire</NavLink>
+          <NavLink href="/projects/">Hire Post Project</NavLink>
           </NavItem>
           <NavItem>
-          <NavLink href="/projects/">Work</NavLink>
+          <NavLink href="/work/">Work</NavLink>
           </NavItem>
           <NavItem>
           <NavLink href="/projects/">Know More</NavLink>
@@ -48,8 +50,9 @@ class NavHeader extends Component {
                 <Sigin buttonLabel="Signin" />
                 
               </NavItem>
+              <span></span>
               <NavItem>
-              <NavLink href="/projects/">Sign-Up</NavLink>
+              <Signup buttonLabel="Signup" />
             </NavItem>
 
               <UncontrolledDropdown nav inNavbar>

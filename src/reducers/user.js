@@ -1,10 +1,11 @@
-import { USER_SIGNIN} from "../actions/useractions";
+import { USER_SIGNIN,USER_SIGNUP} from "../actions/useractions";
 
 const initialState = {
        
         "user":{
             "signupmsg": "",
-            "signinmsg" :""
+            "signinmsg" :"",
+            "basic":"harsha"
         }
 };
 
@@ -12,29 +13,39 @@ const user = (state = initialState, action) => {
 
 
     switch (action.type) {
-        // case USER_SIGNUP :
-        //     if(action.user) {
+        case USER_SIGNUP :
+        console.log("action",action)
+            
+        if(action.user) {
+                return {
+                   ...state,
+                   "user":{
+                            // "signupmsg" : "Sign Up sucessful. Please Login.",
+                            // "signup":true,
+                            "basic": "harsha",
+                            "pinfo" : action.user,
+                            "eduinfo" : "harsha",
+                            "signupafter" : true,
+                            "starred" : "harsha",
+                            "activity" : "harsha",
+                            "signupmsg":"Sign Up sucessful. Please Login."   
+                        }
+                };
 
-        //         return {
-        //            ...state,
-        //            "user":{
-        //                     "signupmsg" : "Sign Up sucessful. Please Login."
-        //                 }
-        //         };
+            }
+            else {
 
-        //     }
-        //     else {
+                return {
+                   ...state,
+                   "user":{                            
+                            "signupmsg" : action.msg,
+                            "signup":false
+                        }
+                };
 
-        //         return {
-        //            ...state,
-        //            "user":{                            
-        //                     "signupmsg" : action.msg
-        //                 }
-        //         };
+            }
 
-        //     }
-
-         //   break;   
+           break;   
 
          case USER_SIGNIN :
          console.log("action--->reducerascas")
@@ -44,11 +55,12 @@ const user = (state = initialState, action) => {
                        ...state,
                        "user":{
                                 "basic": "harsha",
-                                "pinfo" : "harsha",
+                                "pinfo" : action.user,
                                 "eduinfo" : "harsha",
                                 "loggedin" : true,
                                 "starred" : "harsha",
-                                "activity" : "harsha"                                
+                                "activity" : "harsha",
+                                "signinmsg":action.msg                                
                             }
                     };
 
@@ -67,125 +79,6 @@ const user = (state = initialState, action) => {
 
                 break;    
 
-
-        //  case USER_SIGNOUT :
-        //         if(action.loggedOut) {
-
-        //             return {                       
-        //                "user":{
-        //                         "loggedin" : false                                
-        //                     }                
-        //             };
-
-        //         }
-        //         else {
-        //             return {
-        //                 ...state
-        //             }
-        //         }               
-
-        //         break;     
-
-        //  case USER_PINFO :
-        //         if(action.pinfo) {
-
-        //             return {
-        //                ...state,
-        //                "user":{
-        //                         "basic":state.user.basic,
-        //                         "loggedin":state.user.loggedin,
-        //                         "eduinfo" : state.user.eduinfo,
-        //                         "pinfo": action.pinfo,
-        //                          "interests" : state.user.interests,
-        //                         "starred" : state.user.starred,
-        //                         "activity" : state.user.activity
-
-        //                     }
-        //             };
-
-        //         }
-        //         else {
-        //             return {
-        //                 ...state
-        //             }
-        //         }               
-
-        //         break;
-        //  case USER_EDUINFO :
-        //         if(action.eduinfo) {
-
-        //             return {
-        //                ...state,
-        //                "user":{
-        //                         "basic":state.user.basic,
-        //                         "loggedin":state.user.loggedin,
-        //                         "pinfo": state.user.pinfo,
-        //                          "interests" : state.user.interests,
-        //                         "starred" : state.user.starred,
-        //                         "activity" : state.user.activity,
-        //                         "eduinfo" : action.eduinfo
-        //                     }
-        //             };
-
-        //         }
-        //         else {
-        //             return {
-        //                 ...state
-        //             }
-        //         }               
-
-        //         break;
-
-        //      case USER_STAR_ACT :
-        //         if(action.starred) {
-              
-        //             return {
-        //                ...state,
-        //                "user":{
-        //                         "basic": state.user.basic,
-        //                         "loggedin" : state.user.loggedin,
-        //                         "pinfo": state.user.pinfo,
-        //                         "eduinfo" : state.user.eduinfo,
-        //                            "interests" : state.user.interests,
-        //                         "starred" : action.starred,
-        //                         "activity" : action.activity
-        //                     }
-        //             };
-
-        //         }
-        //         else {
-        //             return {
-        //                 ...state
-        //             }
-        //         }               
-
-        //         break;
-
-        //         case USER_INTINFO :
-        //         if(action.interests) {
-              
-        //             return {
-        //                ...state,
-        //                "user":{
-        //                         "basic": state.user.basic,
-        //                         "loggedin" : state.user.loggedin,
-        //                         "pinfo": state.user.pinfo,
-        //                         "eduinfo" : state.user.eduinfo,
-        //                         "starred" : state.user.starred,
-        //                         "activity" : state.user.activity,
-        //                         "interests" : action.interests
-        //                     }
-        //             };
-
-        //         }
-        //         else {
-        //             return {
-        //                 ...state
-        //             }
-        //         }               
-
-         //       break;
-       
         default :
             return state;
 

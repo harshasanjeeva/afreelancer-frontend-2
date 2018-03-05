@@ -4,8 +4,9 @@ const headers = {
     'Accept': 'application/json'
 };
 
+//================================signup===========================
 export const signup = (payload) =>
-    fetch(`${api}/operations/signup`, {
+    fetch(`${api}/users/signup`, {
         method: 'POST',
         headers: {
             ...headers,
@@ -23,7 +24,7 @@ export const signup = (payload) =>
             return error;
         });
 
-
+//=====================================login=======================
 export const login = (payload) =>
     fetch(`${api}/users/login`, {
         method: 'POST',

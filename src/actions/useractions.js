@@ -1,7 +1,7 @@
 import * as API from '../api/UserApi';
+import history from '../components/History';
 
-
-// export const USER_SIGNUP = 'USER_SIGNUP';
+export const USER_SIGNUP = 'USER_SIGNUP';
 export const USER_SIGNIN = 'USER_SIGNIN';
 // export const USER_SIGNOUT = 'USER_SIGNOUT';
 // export const USER_PINFO = 'USER_PINFO';
@@ -32,9 +32,8 @@ export const USER_SIGNIN = 'USER_SIGNIN';
 
 // }
 
-
+//===================Signin====================start
 export function userSignin(userDeails) {
-    
 		console.log("in signup");
 		return function(dispatch){
 			try {
@@ -42,13 +41,7 @@ export function userSignin(userDeails) {
 			.then((response) => {
 				try {
 					console.log("in signup");
-					dispatch(signin(response))
-				// return {
-				// 	type: USER_SIGNIN,
-				// 	msg:"Harsha"
-			
-				// }
-				
+					dispatch(signin(response))			
 			}
 			catch(error){
 console.log(error)
@@ -58,7 +51,6 @@ console.log(error)
         console.log(error)
     }
 		}
-//	}
 
 };
 
@@ -66,11 +58,51 @@ export function signin(resData) {
 console.log("hiiiiiiiiii",resData)
 	return {
 		type: USER_SIGNIN,
-		msg:"Harsha"
+		msg:"Harsha",
+		user: resData.email
 
 	}
 	
 }
+//===================Signin====================end
+
+//===================Signup==================start
+export function userSignup(userDeails) {
+	console.log("in signup");
+	return function(dispatch){
+		try {
+		API.signup(userDeails)
+		.then((response) => {
+			try {
+				console.log("in signup");
+				dispatch(signup(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function signup(resData) {
+	
+	console.log("hiiiiiiiiii",resData)
+		return {
+			type: USER_SIGNUP,
+			msg:"Harsha",
+			user:resData
+		}
+		
+	}
+
+//===================Signup====================end
+
+
 
    	
 	  // dispatch(updateSigninUserData(resData, rData, actData));

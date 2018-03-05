@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NavHeader from './Nav'
+import NavHeader from './NavHeader'
 
 class Home extends Component {
   render() {

@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import { Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import NavHeaderLogin from './NavHeaderLogin';
-
+import history from './History'
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -17,6 +17,13 @@ class Profile extends Component {
     
         // this.toggle = this.toggle.bind(this);
       }
+
+
+
+callworks(){
+history.push('./work')
+}
+
 
   render() {
       console.log("userrssss",this.props.users)
@@ -43,7 +50,11 @@ class Profile extends Component {
             <CardText></CardText>
             </CardBody>
             <br />
-    
+            <Button onClick={() => {
+
+                this.callworks();
+                
+              }} >Go to job postings</Button>
         </Card>
         </div>
     );

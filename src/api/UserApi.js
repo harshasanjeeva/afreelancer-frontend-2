@@ -45,43 +45,23 @@ export const login = (payload) =>
             return error;
         });
 
-
-// export const signup = (payload) =>  
-//     fetch(`${api}/signup`, {
-//         method: 'POST',
-//         headers: {
-//             ...headers,
-//             'Content-Type': 'application/json'
-//         },
-//         credentials:'include',
-//         body: JSON.stringify(payload)
-//     }).then((response) => response.json())
-
-//     .then((responseJson) => {
-//         return responseJson;
-//     })
-//         .catch(error => {
-//             console.log("Sign up Falied with error : "+error);
-//             return error;
-// });
-
-
-// export const signin = (payload) =>  
-//     fetch(`${api}/signin`, {
-//         method: 'POST',
-//         headers: {
-//             ...headers,
-//             'Content-Type': 'application/json'
-//         },
-//         credentials:'include',
-//         body: JSON.stringify(payload)
-//     }).then((response) => response.json())
-
-//     .then((responseJson) => {
-//         return responseJson;
-//     })
-//         .catch(error => {
-//             console.log("Sign in Falied with error : "+error);
-//             return error;
-// });
+//============================projectProsposal=====================
+       
+export const projectProposal = (payload) =>
+    fetch(`${api}/project/proposal`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("here in api project proposal"); 
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
 

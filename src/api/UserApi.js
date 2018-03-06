@@ -48,7 +48,7 @@ export const login = (payload) =>
 //============================projectProsposal=====================
        
 export const projectProposal = (payload) =>
-    fetch(`${api}/project/proposal`, {
+    fetch(`${api}/projects/proposal`, {
         method: 'POST',
         headers: {
             ...headers,

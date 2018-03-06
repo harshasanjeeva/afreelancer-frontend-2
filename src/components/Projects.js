@@ -3,13 +3,20 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import NavHeader from './NavHeader';
 import {projectProposal} from "../actions/useractions";
+import {connect} from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+
+
+
+
+
 class Projects extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
       "projectName":"",
-      "projectDecription":"",
+      "projectDescription":"",
       "projectBudget":""
     };
 
@@ -52,7 +59,7 @@ class Projects extends Component {
           <Input type="textarea" name="text" id="exampleText" placeholder="Describe your project here..." onChange={(event) => {
             console.log(this.state);                
             this.setState({
-              projectDecription: event.target.value
+              projectDescription: event.target.value
                             });
                         }} />
 
@@ -95,4 +102,4 @@ const mapDispatchToProps = (dispatch) => {
     projectSubmit : (data) => dispatch(projectProposal(data))
   }
 }
-export default Projects;
+export default withRouter(connect(null,mapDispatchToProps)(Projects));

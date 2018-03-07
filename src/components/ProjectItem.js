@@ -80,9 +80,9 @@ class ProjectItem extends Component {
       
     <TableRowColumn key={row.name} style={{width:5}}>{row.id}</TableRowColumn>
     <TableRowColumn key={row.id} >{row.name}</TableRowColumn>
-    <TableRowColumn key={row.price} >{row.description}</TableRowColumn>
-    <TableRowColumn key={row.price} >{row.budget}</TableRowColumn>
-    <TableRowColumn key={row.price} style={{width:5}}>{row.bids}</TableRowColumn>
+    <TableRowColumn key={row.description} >{row.description}</TableRowColumn>
+    <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>
+    <TableRowColumn key={row.bids} style={{width:5}}>{row.bids}</TableRowColumn>
     </TableRow>
   })}
 
@@ -148,12 +148,12 @@ class ProjectItem extends Component {
 //   </MuiThemeProvider>
 // );
 
-const mapStateToProps = (user) => {
+// const mapStateToProps = (user) => {
 
-      return {
-          username: user.user.user.username,
-          email: user.user.user.email
-      };//{msg};
-//    }
-  }
+//       return {
+//           username: user.user.user.username,
+//           email: user.user.user.email
+//       };//{msg};
+// //    }
+//   }
 export default ProjectItem;

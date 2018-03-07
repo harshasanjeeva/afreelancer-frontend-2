@@ -9,6 +9,7 @@ import Home from './Home';
 import Work from './Work';
 import Projects from './Projects';
 import {connect} from 'react-redux';
+import image from './image2.png'
 
 class NavHeader extends Component {
     constructor(props) {
@@ -28,17 +29,13 @@ class NavHeader extends Component {
     return (
         <div>
         <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/">freelancer</NavbarBrand>
+
+          <NavbarBrand href="/">
+          <img src={require('./image2.png')} width="110" height="30" alt="" />
+         
+          </NavbarBrand>
           <Nav className="ml-auto" navbar>
-          <NavItem>
-          <NavLink href="/projects/">Hire Post Project</NavLink>
-          </NavItem>
-          <NavItem>
-          <NavLink href="/work/">Work</NavLink>
-          </NavItem>
-          <NavItem>
-          <NavLink href="/projects/">Know More</NavLink>
-          </NavItem>
+
           </Nav>
           
           <NavbarToggler onClick={this.toggle} />

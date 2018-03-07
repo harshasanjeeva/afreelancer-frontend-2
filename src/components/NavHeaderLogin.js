@@ -8,6 +8,7 @@ import Signup from './Signup'
 import Home from './Home';
 import Work from './Work';
 import Projects from './Projects';
+import Signout from './Signout';
 import {connect} from 'react-redux';
 
 class NavHeaderLogin extends Component {
@@ -28,7 +29,12 @@ class NavHeaderLogin extends Component {
     return (
         <div>
         <Navbar color="faded" light expand="md">
-          <NavbarBrand href="/">freelancer</NavbarBrand>
+
+
+        <NavbarBrand href="/">
+        <img src={require('./image2.png')} width="110" height="30" alt="" />
+       
+        </NavbarBrand>
           <Nav className="ml-auto" navbar>
           <NavItem>
           <NavLink href="/projects/">Hire Post Project</NavLink>
@@ -45,19 +51,16 @@ class NavHeaderLogin extends Component {
           
           
           
-          {!this.props.islogin ?
+        
        
             
           <Collapse isOpen={this.state.isOpen} navbar>
 
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Sigin buttonLabel="Signin" />
-                
-              </NavItem>
+
               <span></span>
               <NavItem>
-              <Signup buttonLabel="Signup" />
+              <Signout buttonLabel="Signout" />
             </NavItem>
 
               <UncontrolledDropdown nav inNavbar>
@@ -79,7 +82,7 @@ class NavHeaderLogin extends Component {
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
-          : <p></p>}
+        
      
         </Navbar>
       </div>

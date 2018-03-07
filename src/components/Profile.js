@@ -6,6 +6,7 @@ import { Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGr
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import NavHeaderLogin from './NavHeaderLogin';
 import history from './History'
+import { Link } from 'react-router-dom';
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ class Profile extends Component {
 
 
 callworks(){
-history.push('./work')
+    window.location.href = "http://localhost:3000/work"
 }
 
 
@@ -29,7 +30,7 @@ history.push('./work')
       console.log("userrssss",this.props.users)
     return (
         <div >
-      
+      <NavHeaderLogin />
         <Card style={{ 
             
             width: 300,

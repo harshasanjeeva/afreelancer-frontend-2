@@ -28,7 +28,7 @@ const user = (state = initialState, action) => {
                             "signupafter" : true,
                             "starred" : "harsha",
                             "activity" : "harsha",
-                            "signupmsg":"Sign Up sucessful. Please Login."   
+                            "signupmsg":action.user.message  
                         }
                 };
 

@@ -1,4 +1,4 @@
-import { USER_SIGNIN,USER_SIGNUP} from "../actions/useractions";
+import { USER_SIGNIN,USER_SIGNUP,PROJECT_DESC} from "../actions/useractions";
 
 const initialState = {
        
@@ -77,7 +77,37 @@ const user = (state = initialState, action) => {
 
                 }
 
-                break;    
+                break;   
+
+     //=========================PROJECT_DESC           
+                case PROJECT_DESC :
+                console.log("reducer-->action--->PROJECT_DESC")
+                         if(action.status) {
+                           console.log("reducer-->action--->PROJECT_DESC 2",action)
+                           return {
+                              ...state,
+                              "user":{
+                                       "basic": "harsha",
+                                        "status": true,
+                                        "desc": action.data
+                                   }
+                           };
+       
+                       }
+                       else {
+                           console.log(action.msg);
+                           return {
+                              ...state,
+                              "user":{                            
+                                       "loggedin" : false,
+                                       "signinmsg" : action.msg
+                                   }
+                           };
+       
+                       }
+       
+                       break;          
+
 
         default :
             return state;

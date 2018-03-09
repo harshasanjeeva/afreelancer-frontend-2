@@ -65,3 +65,43 @@ export const projectProposal = (payload) =>
             return error;
         });
 
+//============================projectProsposal=====================
+       
+export const projectDesc = (payload) =>
+    fetch(`${api}/projects/desc`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("here in api project proposal"); 
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+//============================projectBID=====================
+       
+export const projectBid = (payload) =>
+    fetch(`${api}/projects/bid`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("here in api project proposal"); 
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+        

@@ -4,6 +4,8 @@ import history from '../components/History';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const USER_SIGNIN = 'USER_SIGNIN';
 export const PROJECT_PROPOSAL = 'PROJECT_PROPOSAL';
+export const PROJECT_DESC = 'PROJECT_DESC';
+export const PROJECT_BID = 'PROJECT_BID';
 // export const USER_SIGNOUT = 'USER_SIGNOUT';
 // export const USER_PINFO = 'USER_PINFO';
 // export const USER_EDUINFO = 'USER_EDUINFO';
@@ -138,3 +140,78 @@ export function projectProposal2(resData) {
 		
 	}
 //=================ProjectProposal================end
+
+
+
+
+//==================ProjectDesc==============start
+export function projectDesc(userDeails) {
+	console.log("in projectDesc");
+	return function(dispatch){
+		try {
+		API.projectDesc(userDeails)
+		.then((response) => {
+			try {
+				console.log("in projectDesc 2");
+				dispatch(projectDesc2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function projectDesc2(resData) {
+	
+	console.log("PROJECT_DESC 2-->actions",resData)
+		return {
+			type: PROJECT_DESC,
+			msg:"ProjectDesc",
+			status:true,
+			data:resData.projectDesc[0]
+		}
+		
+	}
+//=================ProjectDesc================end
+
+
+
+//==================ProjectBid==============start
+export function projectBid(userDeails) {
+	console.log("in projectDesc",userDeails);
+	return function(dispatch){
+		try {
+		API.projectBid(userDeails)
+		.then((response) => {
+			try {
+				console.log("in projectDesc 2");
+				dispatch(ProjectBid2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function ProjectBid2(resData) {
+	
+	console.log("PROJECT_DESC 2-->actions",resData)
+		return {
+			type: PROJECT_DESC,
+			msg:"ProjectBid",
+		}
+		
+	}
+//=================ProjectBid================end

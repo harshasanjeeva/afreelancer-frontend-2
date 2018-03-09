@@ -12,9 +12,10 @@ class Work extends Component {
     return (
       <div>
       <NavHeaderLogin />
-      
-        <h3>Find work</h3>
-        <hr />
+ 
+        <h4>Find work</h4>
+
+        <div >
         <Form>
         <FormGroup row>
         <Label for="exampleSearch" style={{marginLeft:150}}>Search</Label>
@@ -23,8 +24,9 @@ class Work extends Component {
         </Col>
       </FormGroup>
       </Form>
-<hr />
-        <ProjectItem />
+
+        <ProjectItem  />
+        </div>
       </div>
     );
   }

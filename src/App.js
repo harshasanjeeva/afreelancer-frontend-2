@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {Router} from 'react-router-dom';
 import Root from './components/Root';
 import './App.css';
-import { Button } from 'reactstrap';
+
+//import Button from 'react-bootstrap/lib/Button';
 import history from '../src/components/History';
 import Home from '../src/components/Home';
 import Work from '../src/components/Work';
@@ -11,7 +12,7 @@ import LandingPage from '../src/components/LandingPage';
 import {Route, Switch} from 'react-router-dom';
 import Profile from '../src/components/Profile';
 import {withRouter } from 'react-router-dom';
-
+import ProjectItemDesc from '../src/components/ProjectItemDesc';
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
       <Route path='/projects' component={Projects}/>
       <Route exact path='/landingpage' component={LandingPage}/>
       <Route exact path='/profile' component={Profile}/>
+      <Route exact path='/ProjectItemDesc' component={ProjectItemDesc}/>
   </Switch>
       </Router>
       </div>

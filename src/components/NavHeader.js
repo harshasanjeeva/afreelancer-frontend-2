@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Collapse, Navbar, NavbarToggler, DropdownMenu, DropdownItem,DropdownToggle,UncontrolledDropdown,NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import { Route, withRouter } from 'react-router-dom';
+
 // import text from './../images/1.svg';
 // import logo from './../images/2.svg';
 import Sigin from './Signin'
@@ -28,57 +29,72 @@ class NavHeader extends Component {
   render() {
     return (
         <div>
-        <Navbar color="faded" light expand="md">
+        <Navbar  light expand="md">
 
-          <NavbarBrand href="/">
-          <img src={require('./image2.png')} width="110" height="30" alt="" />
-         
-          </NavbarBrand>
+
+
+        <NavbarBrand href="/">
+
+        <img src={require('./image2.png')} width="110" height="30" alt="" />
+
+       
+
+        </NavbarBrand>
+
+        <Nav className="ml-auto" navbar>
+
+
+
+        </Nav>
+
+        
+
+        <NavbarToggler onClick={this.toggle} />
+
+        
+
+        
+
+        
+
+    
+
+     
+
+          
+
+        <Collapse isOpen={this.state.isOpen} navbar>
+
+
+
           <Nav className="ml-auto" navbar>
 
-          </Nav>
-          
-          <NavbarToggler onClick={this.toggle} />
-          
-          
-          
-      
-       
-            
-          <Collapse isOpen={this.state.isOpen} navbar>
+            <NavItem>
 
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Sigin buttonLabel="Signin" />
-                
-              </NavItem>
-              <span></span>
-              <NavItem>
-              <Signup buttonLabel="Signup" />
+              <Sigin buttonLabel="Signin" />
+
+              
+
             </NavItem>
 
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu >
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-    
-     
-        </Navbar>
+            &nbsp;
+            <NavItem>
+
+            <Signup buttonLabel="Signup" />
+
+          </NavItem>
+
+
+
+          </Nav>
+
+        </Collapse>
+
+  
+
+   
+
+      </Navbar>
       </div>
     );
   }

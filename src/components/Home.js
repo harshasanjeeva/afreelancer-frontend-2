@@ -9,11 +9,7 @@ class Home extends Component {
     return (
       <div >
       <NavHeader />
-        <h3>Home</h3>
-        <div style={{  maxWidth: 700,
-          maxHeight: 100}} >
-        <Slider />
-          </div>
+        <Slider />  
       </div>
     );
   }

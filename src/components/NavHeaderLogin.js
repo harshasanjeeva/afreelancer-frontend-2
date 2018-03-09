@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Navbar, NavbarToggler, DropdownMenu, DropdownItem,DropdownToggle,UncontrolledDropdown,NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import {Navbar, Nav,NavItem, Button, Collapse,  NavbarToggler, DropdownMenu, DropdownItem,DropdownToggle,UncontrolledDropdown,NavbarBrand,  NavLink } from 'reactstrap';
+
 import { Route, withRouter } from 'react-router-dom';
 // import text from './../images/1.svg';
 // import logo from './../images/2.svg';
@@ -27,68 +28,52 @@ class NavHeaderLogin extends Component {
       }
   render() {
     return (
-        <div>
-        <Navbar color="faded" light expand="md">
+      <Navbar light expand="md">
 
 
-        <NavbarBrand href="/">
-        <img src={require('./image2.png')} width="110" height="30" alt="" />
-       
-        </NavbarBrand>
+      <NavbarBrand href="/">
+      <img src={require('./image2.png')} width="110" height="30" alt="" />
+      
+      </NavbarBrand>
+        <Nav className="ml-auto" navbar>
+        <NavItem>
+        <NavLink href="/projects/">Hire Post Project</NavLink>
+        </NavItem>
+        <NavItem>
+        <NavLink href="/work/">Work</NavLink>
+        </NavItem>
+        <NavItem>
+        <NavLink href="/projects/">Know More</NavLink>
+        </NavItem>
+        </Nav>
+        
+        <NavbarToggler onClick={this.toggle} />
+        
+        
+        
+      
+      
+          
+        <Collapse isOpen={this.state.isOpen} navbar>
+      
           <Nav className="ml-auto" navbar>
-          <NavItem>
-          <NavLink href="/projects/">Hire Post Project</NavLink>
+      
+            <span></span>
+            <NavItem>
+            <Signout buttonLabel="Signout" />
           </NavItem>
-          <NavItem>
-          <NavLink href="/work/">Work</NavLink>
-          </NavItem>
-          <NavItem>
-          <NavLink href="/projects/">Know More</NavLink>
-          </NavItem>
+      
+      
           </Nav>
-          
-          <NavbarToggler onClick={this.toggle} />
-          
-          
-          
-        
-       
-            
-          <Collapse isOpen={this.state.isOpen} navbar>
-
-            <Nav className="ml-auto" navbar>
-
-              <span></span>
-              <NavItem>
-              <Signout buttonLabel="Signout" />
-            </NavItem>
-
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu >
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        
-     
-        </Navbar>
-      </div>
+        </Collapse>
+      
+      
+      </Navbar>
     );
   }
 }
+
+
 
 
 const mapStateToProps = (user) => {

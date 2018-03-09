@@ -28,9 +28,7 @@ callworks(){
 
   render() {
       console.log("userrssss",this.props.users)
-    return (
-        <div >
-      <NavHeaderLogin />
+    return (  <div> <NavHeaderLogin />
         <Card style={{ 
             
             width: 300,
@@ -58,7 +56,7 @@ callworks(){
               }} >Go to job postings</Button>
         </Card>
         </div>
-    );
+    )
   }
 }
 const mapStateToProps = (user) => {

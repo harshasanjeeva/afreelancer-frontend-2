@@ -49,7 +49,7 @@ class Signin extends Component {
 
     return (
       <div>
-        <Button outline color="secondary" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+        <Button outline color="primary"  size="md" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader>Sign In</ModalHeader>
           <ModalBody>

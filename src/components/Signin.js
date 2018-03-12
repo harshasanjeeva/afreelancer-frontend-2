@@ -25,12 +25,9 @@ class Signin extends Component {
 
   navigate() {
    // console.log("im her in signi=up herehreqhroeijos")
+   //window.location.href = "http://localhost:3000/profile"
     history.push('/profile');
-    // this.setState({
-    //   modal: false,
-    //   "email":"",
-    //   "password":""
-    // });
+
   }
 
 

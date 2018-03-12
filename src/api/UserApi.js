@@ -12,6 +12,7 @@ export const signup = (payload) =>
             ...headers,
             'Content-Type': 'application/json'
         },
+        credentials:'include',
         body: JSON.stringify(payload)
     }).then(response => response.json())
         .then(response => {
@@ -32,6 +33,7 @@ export const login = (payload) =>
             ...headers,
             'Content-Type': 'application/json'
         },
+        credentials:'include',
         body: JSON.stringify(payload)
     }).then(response => response.json())
         .then(response => {

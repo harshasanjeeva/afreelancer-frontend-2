@@ -60,8 +60,8 @@ class NavHeaderLogin extends Component {
       
             <span></span>
             <NavItem>
-            <Signout buttonLabel="Signout" />
-          </NavItem>
+            <NavLink href="/">Signout</NavLink>
+            </NavItem>
       
       
           </Nav>

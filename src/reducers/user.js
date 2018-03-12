@@ -15,7 +15,7 @@ const user = (state = initialState, action) => {
     switch (action.type) {
         case USER_SIGNUP :
         console.log("action",action)
-            
+        console.log("state---signup-->",state)
         if(action.user) {
                 return {
                    ...state,
@@ -51,16 +51,19 @@ const user = (state = initialState, action) => {
          console.log("action--->reducerascas")
                   if(action.username) {
                     console.log("action--->reducer",action)
+                    console.log("state----->",state)
                     return {
                        ...state,
                        "user":{
                                 "basic": "harsha",
                                 "username" : action.username,
                                 "email" : action.email,
+                                "userid":action.id,
                                 "loggedin" : true,
                                 "starred" : "harsha",
                                 "activity" : "harsha",
-                                "signinmsg":action.msg                                
+                                "signinmsg":action.msg,
+                                "projectList":action.projectList                               
                             }
                     };
 
@@ -83,13 +86,13 @@ const user = (state = initialState, action) => {
                 case PROJECT_DESC :
                 console.log("reducer-->action--->PROJECT_DESC")
                          if(action.status) {
-                           console.log("reducer-->action--->PROJECT_DESC 2",action)
+                           console.log("reducer-->action--->PROJECT_DESC 2",action.data)
+                           console.log("state---project-->",state)
                            return {
                               ...state,
                               "user":{
-                                       "basic": "harsha",
-                                        "status": true,
-                                        "desc": action.data
+                                        "projectIndividualDesc": action.data,
+                                        "projectIndividualStatus": action.status
                                    }
                            };
        
@@ -107,7 +110,7 @@ const user = (state = initialState, action) => {
                        }
        
                        break;          
-
+        
 
         default :
             return state;

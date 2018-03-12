@@ -48,7 +48,12 @@ const products = [{
 //   const ProjectItem = ({products}) = (    console.log("products",products[0]) );
 
 class ProjectItem extends Component {
-    
+  constructor(props) {
+    super(props);
+    this.state = {
+      "projectIndividualData":""
+    };
+  }
 //  TableRow1 = ({row}) => (
 //         <TableRow>
 //         <TableRowColumn key={row.name}>{row.name}</TableRowColumn>
@@ -69,7 +74,7 @@ class ProjectItem extends Component {
       }
 
 
-        console.log("products",products);
+        console.log("this.props.projectList",this.props.projectList);
       return (     
           <div style={{backgroundColor:"#c1c0c0", width: "100%", height:"100%",position :"absolute" ,paddingTop:"20px"}}>
           <MuiThemeProvider>
@@ -88,26 +93,30 @@ class ProjectItem extends Component {
   </TableHeader>
   <TableBody>
 
-  {products.map(row => {
-      console.log("row",row);
-
-     return <TableRow  >
-
-    <TableRowColumn key={row.name} >{row.name}</TableRowColumn>
-    <TableRowColumn key={row.description} >{row.description}</TableRowColumn>
-    <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>
-    <TableRowColumn key={row.bids} >{row.bids}</TableRowColumn>
-    <TableRowColumn key={row.id}>
-          <Button color="success"
-              onClick={() => {
-                console.log("row===",row.id)
-
-                 this.props.projectDesc({"project_id":row.id})
-                
-                    }}>Bid Now </Button>
-    </TableRowColumn>
-    </TableRow>
+  {this.props.projectList.map(row => {
+    console.log("row",row);
+  
+   return <TableRow  >
+  
+  <TableRowColumn key={row.name} >{row.name}</TableRowColumn>
+  <TableRowColumn key={row.details} >{row.details}</TableRowColumn>
+  <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>
+  <TableRowColumn key={row.user_id} >-</TableRowColumn>
+  <TableRowColumn key={row.projectid}>
+        <Button color="success"
+            onClick={() => {
+              console.log("row===",row,row.projectid)
+              this.setState({
+                projectIndividualData:row
+              });
+              console.log("this.state--->",this.state)
+               this.props.projectDesc(row)
+               history.push('/ProjectItemDesc');
+                  }}>Bid Now </Button>
+  </TableRowColumn>
+  </TableRow>
   })}
+
 
   </TableBody>
 </Table>
@@ -131,7 +140,10 @@ class ProjectItem extends Component {
       if(user.user != null) {
         console.log("im here in mapStateToProps")
         const status = user.user.user.status;
-        return {status};
+        const projectList = user.user.user.projectList;
+        return {status, projectList};
     }
     }
 export default connect(mapStateToProps,mapDispatchToProps)(ProjectItem);
+
+

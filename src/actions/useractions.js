@@ -63,7 +63,9 @@ console.log("hiiiiiiiiii",resData)
 		type: USER_SIGNIN,
 		msg:resData.message,
 		username: resData.username,
-		email: resData.email
+		email: resData.email,
+		id: resData.id,
+		projectList: resData.projectList
 	}
 	
 }
@@ -146,22 +148,20 @@ export function projectProposal2(resData) {
 
 //==================ProjectDesc==============start
 export function projectDesc(userDeails) {
-	console.log("in projectDesc");
+	console.log("in projectDesc",userDeails);
 	return function(dispatch){
-		try {
-		API.projectDesc(userDeails)
-		.then((response) => {
-			try {
-				console.log("in projectDesc 2");
-				dispatch(projectDesc2(response))			
-		}
-		catch(error){
-console.log(error)
-		}
-		});
-} catch (error) {
-	console.log(error)
-}
+	//	try {
+
+		dispatch(projectDesc2(userDeails))
+			// return{
+			// 	type: PROJECT_DESC,
+			// 	status:true,
+			// 	data: userDeails
+			// } 
+	
+// } catch (error) {
+// 	console.log(error)
+// }
 	}
 
 };
@@ -174,7 +174,7 @@ export function projectDesc2(resData) {
 			type: PROJECT_DESC,
 			msg:"ProjectDesc",
 			status:true,
-			data:resData.projectDesc[0]
+			data:resData
 		}
 		
 	}
@@ -209,8 +209,8 @@ export function ProjectBid2(resData) {
 	
 	console.log("PROJECT_DESC 2-->actions",resData)
 		return {
-			type: PROJECT_DESC,
-			msg:"ProjectBid",
+			type: PROJECT_BID,
+			msg:resData.message,
 		}
 		
 	}

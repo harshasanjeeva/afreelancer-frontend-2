@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import NavHeader from './NavHeader';
 import { Route, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
-import { Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import { Row,Col,Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Jumbotron,Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import NavHeaderLogin from './NavHeaderLogin';
 import history from './History'
 import { Link } from 'react-router-dom';
 class Profile extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //   modal: false,
-        //   "email":"",
-        //   "password":""
-        // };
+        this.state = {
+          "userid": "",
+
+        };
     
         // this.toggle = this.toggle.bind(this);
       }
@@ -22,31 +21,73 @@ class Profile extends Component {
 
 
 callworks(){
-    window.location.href = "http://localhost:3000/work"
+   // window.location.href = "http://localhost:3000/work"
+   history.push('/projects');
 }
 
 
   render() {
       console.log("userrssss",this.props.users)
     return (  <div> <NavHeaderLogin />
+
+
+        <div style={{  width:"60%",marginRight:"2%",float: "left"}}>
+        <Jumbotron>
+          <h1 className="display-3">Hi,{this.props.username}! </h1>
+          <p className="lead">Claim 100 Bids for Free
+          Get started with a FREE TRIAL for 100 bids and more!</p>
+          <hr className="my-2" />
+          <p>You are almost ready to start earning money as a freelancer, simply complete the following steps:
+         <ul>
+         <li>Verify your email</li>
+         <li>Update your profile</li>
+         <li>Place your first bid</li>
+         </ul>
+         Be sure to check out our Tips for New Freelancers guide which explains the best way to find work on Freelancer.com</p>
+          <p className="lead">
+            <Button color="primary" onClick={() => {
+                this.callworks();
+              }}  >Check out projects</Button>
+          </p>
+        </Jumbotron>
+      </div>
         <Card style={{ 
             
             width: 300,
             margin: 'auto',
-            height: 350,
+            height: 400,
 }}>
-        <CardImg top width="100%" align="middle" src={require('./image1.png')} alt="Card image cap" style={{ 
+      
+
+            <img src={require('./image3.png')} alt="Card image cap" style={{ 
             
-            width: 150,
-            margin: 'auto',
-            height: 240,
-            borderRadius: 50}}/>
+                width: 120,
+                margin: 'auto',
+                marginTop:'10px',
+               height: 140,
+                borderRadius: 50}}/>
             <hr />
             <CardBody>
             <CardTitle>User Profile Page</CardTitle>
-            <Label>Username:</Label><CardSubtitle>{this.props.username}</CardSubtitle>
-            <Label>Email:</Label><CardSubtitle>{this.props.email}</CardSubtitle>
-            <CardText></CardText>
+            <Row>
+            <Col xs='5'>
+            Username:
+            </Col>
+            <Col>
+            {this.props.username}
+            </Col>
+            </Row>
+
+
+
+            <Row>
+            <Col xs='5'>Email:
+            </Col>
+            <Col>
+            {this.props.email}
+            </Col>
+            </Row>
+            
             </CardBody>
             <br />
             <Button onClick={() => {
@@ -67,7 +108,8 @@ const mapStateToProps = (user) => {
     //   user.user.user.signinmsg = "";
       return {
           username: user.user.user.username,
-          email: user.user.user.email
+          email: user.user.user.email,
+          userid: user.user.user.userid
       };//{msg};
 //    }
   }

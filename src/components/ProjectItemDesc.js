@@ -16,13 +16,16 @@ class ProjectItemDesc extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            "userid":"",
+            "projectid":"",
+            "bidderid":"",
             "amount":""
           };
       }
 
 
   render() {
-      console.log("desc",this.props.desc)
+      console.log("desc-->",this.props.data)
     return (
         <div >
       <NavHeaderLogin />
@@ -47,7 +50,7 @@ class ProjectItemDesc extends Component {
   </Row>
 <Row>
   
-  <Col xs="3"> {this.props.desc.name} </Col>
+  <Col xs="3"> {this.props.data.name} </Col>
 
 </Row>
 
@@ -56,9 +59,29 @@ class ProjectItemDesc extends Component {
   <Col xs="3"><strong>Description</strong></Col>
 </Row>
 <Row>
-  <Col xs="7">{this.props.desc.details}</Col>
+  <Col xs="7">{this.props.data.details}</Col>
 </Row>
 <br />
+
+<Row>
+  <Col xs="3"><strong>Owner-Id:</strong></Col>
+</Row>
+<Row>
+  <Col xs="4">{this.props.data.user_id}</Col>
+</Row>
+<br />
+
+<Row>
+  <Col xs="3"><strong>Project-Id:</strong></Col>
+</Row>
+<Row>
+  <Col xs="4">{this.props.data.projectid}</Col>
+</Row>
+<br />
+
+
+
+
 <Row>
   <Col xs="3"><strong>Bid Amount:</strong></Col>
 </Row>
@@ -66,10 +89,14 @@ class ProjectItemDesc extends Component {
 
 
   <Col xs="3">           <Input type="number" onChange={(event) => {
-    console.log(this.state);
+    console.log("userid==>",this.props.userid);
     this.setState({
-        amount: event.target.value
-    }); 
+      bidderid:this.props.userid,
+      projectid:this.props.data.projectid,
+      ownerid:this.props.data.user_id,
+      amount: event.target.value
+    });
+    console.log(this.state);
 }}/></Col>
 
 </Row>
@@ -85,6 +112,11 @@ class ProjectItemDesc extends Component {
 
 
 </Container>
+
+
+
+
+
     </Card>
         </div>
         </div>
@@ -94,21 +126,16 @@ class ProjectItemDesc extends Component {
 
 
 const mapStateToProps = (user) => {
-
-        desc:{
-            name:"website"
-            details:"s a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-        }
-    return {
-          
-          desc:{
-            name:"website",
-            details:"Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-        }
-      };//{msg};
-    }
+  console.log("project uitem desc=---->",user)
+  if(user.user.user.projectIndividualStatus) {
+    const data = user.user.user.projectIndividualDesc;
+    const userid = user.user.user.userid;
+    return {data,userid};
+  }
+}
+    
 const mapDispatchToProps = (dispatch) => {
-console.log("dispatch",dispatch)
+//console.log("dispatch",dispatch)
 return {
     bid : (data) => dispatch(projectBid(data))
 }
@@ -117,3 +144,6 @@ return {
 
   
 export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(ProjectItemDesc));
+
+
+

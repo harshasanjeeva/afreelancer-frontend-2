@@ -5,6 +5,8 @@ import NavHeader from './NavHeader';
 import {projectProposal} from "../actions/useractions";
 import {connect} from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
+import history from './History'; 
+import NavHeaderLogin from './NavHeaderLogin';
 
 
 
@@ -17,19 +19,34 @@ class Projects extends Component {
     this.state = {
       "projectName":"",
       "projectDescription":"",
-      "projectBudget":""
+      "projectBudget":"",
+      "userid":"",
+      "projectid":""
     };
 
   }
 
 
+  navigate() {
+   //  history.push('/');
+   }
 
-
-
+   getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
   render() {
+    console.log("userid---->",this.props.userid)
+    if(this.props.isLoggedIn){
+
+      console.log("I am here in signin page navigae",this.props.isLoggedIn)
+      this.navigate();
+    }
     return (
   <div>
-  <NavHeader />
+  
+  <NavHeaderLogin />
       <div className="container-fluid" >
       <Card>
       <CardBody>
@@ -47,7 +64,7 @@ class Projects extends Component {
             console.log(this.state);                
             this.setState({
               projectName: event.target.value
-                            });
+                          });
                         }} />
 
       </FormGroup>
@@ -69,9 +86,13 @@ class Projects extends Component {
        <br />
        
           <Input type="number" name="number" id="budget" placeholder="1000 $" onChange={(event) => {
+            
+            
             console.log(this.state);                
             this.setState({
-              projectBudget: event.target.value
+              projectBudget: event.target.value,
+              projectid: this.getRandomInt(100,10000),
+              userid: this.props.userid
                             });
                         }} />
         
@@ -87,6 +108,11 @@ class Projects extends Component {
         </Col>
       </FormGroup>
     </Form>
+    <Button onClick={() => {
+
+      history.push('/work')
+      
+    }} >Check out other projects</Button>
     </CardBody>
     </Card>
     </div>
@@ -102,4 +128,16 @@ const mapDispatchToProps = (dispatch) => {
     projectSubmit : (data) => dispatch(projectProposal(data))
   }
 }
-export default withRouter(connect(null,mapDispatchToProps)(Projects));
+
+
+const mapStateToProps = (user) => {
+  if(user.user != null) {
+    const isLoggedIn = user.user.user.loggedin;
+    const userid = user.user.user.userid
+    return {isLoggedIn,userid};
+}
+}
+
+
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Projects));

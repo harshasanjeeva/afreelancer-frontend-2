@@ -13,17 +13,19 @@ class Work extends Component {
       <div>
       <NavHeaderLogin />
  
-        <h4>Find work</h4>
+        <h4>Browse Projects</h4>
 
-        <div >
+        <div>
         <Form>
         <FormGroup row>
+        
         <Label for="exampleSearch" style={{marginLeft:150}}>Search</Label>
         <Col>
         <Input type="search" name="search" id="exampleSearch" placeholder="search projects" style={{width:400}} />
         </Col>
-      </FormGroup>
-      </Form>
+        
+        </FormGroup>
+        </Form>
 
         <ProjectItem  />
         </div>

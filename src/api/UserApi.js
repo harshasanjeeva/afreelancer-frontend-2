@@ -47,6 +47,30 @@ export const login = (payload) =>
             return error;
         });
 
+//=====================================signout=======================
+export const signout = (payload) =>
+    fetch(`${api}/users/signout`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("payload");
+           // console.log(response.username+" "+response.password);
+            
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+
 //============================projectProsposal=====================
        
 export const projectProposal = (payload) =>

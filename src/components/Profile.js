@@ -28,7 +28,10 @@ callworks(){
 
   render() {
       console.log("userrssss",this.props.users)
-    return (  <div> <NavHeaderLogin />
+    return (  <div> 
+      {this.props.isLoggedIn ?
+        <div>
+      <NavHeaderLogin />
 
 
         <div style={{  width:"60%",marginRight:"2%",float: "left"}}>
@@ -57,8 +60,6 @@ callworks(){
             margin: 'auto',
             height: 400,
 }}>
-      
-
             <img src={require('./image3.png')} alt="Card image cap" style={{ 
             
                 width: 120,
@@ -96,6 +97,8 @@ callworks(){
                 
               }} >Go to job postings</Button>
         </Card>
+</div>
+        : history.push('/')}
         </div>
     )
   }
@@ -109,7 +112,8 @@ const mapStateToProps = (user) => {
       return {
           username: user.user.user.username,
           email: user.user.user.email,
-          userid: user.user.user.userid
+          userid: user.user.user.userid,
+          isLoggedIn: user.user.user.loggedin
       };//{msg};
 //    }
   }

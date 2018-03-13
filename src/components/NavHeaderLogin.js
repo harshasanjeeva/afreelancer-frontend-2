@@ -12,6 +12,7 @@ import Projects from './Projects';
 import Signout from './Signout';
 import {connect} from 'react-redux';
 
+import {signout} from "../actions/useractions";
 class NavHeaderLogin extends Component {
     constructor(props) {
         super(props);
@@ -60,20 +61,24 @@ class NavHeaderLogin extends Component {
       
             <span></span>
             <NavItem>
-            <NavLink href="/">Signout</NavLink>
+            <NavLink href="/" onClick= {() => {
+              this.props.signout();
+            }}
+            >Signout</NavLink>
             </NavItem>
-      
-      
           </Nav>
-        </Collapse>
-      
-      
+        </Collapse> 
       </Navbar>
     );
   }
 }
 
-
+const mapDispatchToProps = (dispatch) => {
+  console.log("dispatch",dispatch)
+  return {
+    signout : () => dispatch(signout())
+  }
+}
 
 
 const mapStateToProps = (user) => {
@@ -85,4 +90,4 @@ const mapStateToProps = (user) => {
 
 }
 
-export default withRouter(connect(mapStateToProps)(NavHeaderLogin));
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(NavHeaderLogin));

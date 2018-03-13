@@ -6,6 +6,7 @@ export const USER_SIGNIN = 'USER_SIGNIN';
 export const PROJECT_PROPOSAL = 'PROJECT_PROPOSAL';
 export const PROJECT_DESC = 'PROJECT_DESC';
 export const PROJECT_BID = 'PROJECT_BID';
+export const USER_SIGNOUT = 'USER_SIGNOUT';
 // export const USER_SIGNOUT = 'USER_SIGNOUT';
 // export const USER_PINFO = 'USER_PINFO';
 // export const USER_EDUINFO = 'USER_EDUINFO';
@@ -215,3 +216,39 @@ export function ProjectBid2(resData) {
 		
 	}
 //=================ProjectBid================end
+
+
+//=====================signout=========================start
+export function signout() {
+	console.log("in signout");
+	return function(dispatch){
+		try {
+		API.signout()
+		.then((response) => {
+			try {
+				console.log("in projectDesc 2");
+				dispatch(signout2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function signout2(resData) {
+	
+	console.log("USER_SIGNOUT 2-->actions",resData)
+		return {
+			type: USER_SIGNOUT,
+			msg:resData.message,
+		}
+		
+	}
+
+//=====================signout=========================end

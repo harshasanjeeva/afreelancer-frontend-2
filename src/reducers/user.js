@@ -1,4 +1,4 @@
-import { USER_SIGNIN,USER_SIGNUP,PROJECT_DESC,USER_SIGNOUT} from "../actions/useractions";
+import { USER_SIGNIN,USER_SIGNUP,PROJECT_DESC,USER_SIGNOUT,PROJECT_BID,MY_PROJECT_DESC,MY_PROJECT_ITEM_DESC} from "../actions/useractions";
 
 const initialState = {
        
@@ -92,7 +92,8 @@ const user = (state = initialState, action) => {
                               ...state,
                               "user":{
                                         "projectIndividualDesc": action.data,
-                                        "projectIndividualStatus": action.status
+                                        "projectIndividualStatus": action.status,
+                                        "state": state
                                    }
                            };
        
@@ -139,7 +140,93 @@ const user = (state = initialState, action) => {
             break;     
 
 
-     
+//===================================PROJECT_BID========================
+    //  case PROJECT_BID :
+    //  console.log("reducer-->action--->PROJECT_BID")
+    //           if(action.status) {
+    //             console.log("reducer-->action--->PROJECT_BID 2",action.data)
+    //             console.log("state---project-->",state)
+    //             return {
+    //                ...state,
+    //                "user":{
+    //                      "loggedin" : false
+    //                     }
+    //             };
+
+    //         }
+    //         else {
+    //             console.log(action.msg);
+    //             return {
+    //                ...state,
+    //                "user":{                            
+    //                         "loggedin" : false,
+    //                         "signinmsg" : action.msg
+    //                     }
+    //             };
+
+    //         }
+
+    //         break;     
+
+    //=========================PROJECT_DESC           
+    case MY_PROJECT_DESC :
+    console.log("reducer-->action--->PROJECT_DESC")
+             if(action.status) {
+               console.log("reducer-->action--->PROJECT_DESC 2",action.data)
+               console.log("state---project-->",state)
+               return {
+                  ...state,
+                  "user":{
+                            "myprojectIndividualDesc": action.data,
+                            "myprojectIndividualStatus": action.status,
+                            "state": state
+                       }
+               };
+
+           }
+           else {
+               console.log(action.msg);
+               return {
+                  ...state,
+                  "user":{                            
+                           "loggedin" : false,
+                           "signinmsg" : action.msg
+                       }
+               };
+
+           }
+
+           break;     
+ 
+    //=========================PROJECT_DESC           
+    case MY_PROJECT_ITEM_DESC :
+    console.log("reducer-->action--->PROJECT_DESC")
+             if(action.status) {
+               console.log("reducer-->action--->PROJECT_DESC 2",action.data)
+               console.log("state---project-->",state)
+               return {
+                  ...state,
+                  "user":{
+                            "myprojectIndividualDescItem": action.data,
+                            "myprojectIndividualStatusItem": true,
+                       }
+               };
+
+           }
+           else {
+               console.log(action.msg);
+               return {
+                  ...state,
+                  "user":{                            
+                           "loggedin" : false,
+                           "signinmsg" : action.msg
+                       }
+               };
+
+           }
+
+           break;               
+
 
         default :
             return state;

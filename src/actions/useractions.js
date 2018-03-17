@@ -7,8 +7,8 @@ export const PROJECT_PROPOSAL = 'PROJECT_PROPOSAL';
 export const PROJECT_DESC = 'PROJECT_DESC';
 export const PROJECT_BID = 'PROJECT_BID';
 export const USER_SIGNOUT = 'USER_SIGNOUT';
-// export const USER_SIGNOUT = 'USER_SIGNOUT';
-// export const USER_PINFO = 'USER_PINFO';
+export const MY_PROJECT_DESC = 'MY_PROJECT_DESC';
+export const MY_PROJECT_ITEM_DESC = 'MY_PROJECT_ITEM_DESC';
 // export const USER_EDUINFO = 'USER_EDUINFO';
 // export const USER_INTINFO = 'USER_INTINFO';
 // export const USER_STAR_ACT = 'USER_STAR_ACT';
@@ -247,8 +247,60 @@ export function signout2(resData) {
 		return {
 			type: USER_SIGNOUT,
 			msg:resData.message,
+			status: true
 		}
 		
 	}
 
 //=====================signout=========================end
+
+
+
+//==================MyyyyyyyProjectDesc==============start
+export function myprojectDesc(userDeails) {
+	console.log("in myprojectDesc-->",userDeails);
+	return function(dispatch){
+		try {
+		API.myprojectDesc(userDeails)
+		.then((response) => {
+			try {
+				console.log("in myprojectDesc 2");
+				dispatch(myprojectDesc2(response));
+				dispatch(myprojectDescItem2(response));		
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function myprojectDesc2(resData) {
+	
+	console.log("PROJECT_DESC 2-->actions",resData)
+		return {
+			type: MY_PROJECT_DESC,
+			msg:"ProjectDesc",
+			status:true,
+			data:resData
+		}
+		
+	}
+//=================MyyyyyyyProjectDesc================end
+
+export function myprojectDescItem2(resData) {
+	
+	console.log("PROJECT_DESC 2-->actions",resData)
+		return {
+			type: MY_PROJECT_ITEM_DESC,
+			msg:"ProjectDesc",
+			status:true,
+			data:resData
+		}
+		
+	}

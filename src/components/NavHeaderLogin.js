@@ -38,13 +38,13 @@ class NavHeaderLogin extends Component {
       </NavbarBrand>
         <Nav className="ml-auto" navbar>
         <NavItem>
-        <NavLink href="/projects/">Hire Post Project</NavLink>
+        <NavLink href="/projects/">Hire Freelancers</NavLink>
         </NavItem>
         <NavItem>
         <NavLink href="/work/">Work</NavLink>
         </NavItem>
         <NavItem>
-        <NavLink href="/projects/">Know More</NavLink>
+        <NavLink href="/myprojects/">My Projects</NavLink>
         </NavItem>
         </Nav>
         

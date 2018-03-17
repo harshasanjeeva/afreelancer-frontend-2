@@ -129,7 +129,8 @@ const mapStateToProps = (user) => {
   console.log("project uitem desc=---->",user)
   if(user.user.user.projectIndividualStatus) {
     const data = user.user.user.projectIndividualDesc;
-    const userid = user.user.user.userid;
+    const userid = user.user.user.state.user.userid;
+    console.log("userid in projectItemDesc----->",userid)
     return {data,userid};
   }
 }

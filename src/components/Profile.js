@@ -35,10 +35,7 @@ callEditProfile(){
       {this.props.isLoggedIn ?
         <div>
       <NavHeaderLogin />
-
-
-        <div style={{  width:"60%",marginRight:"2%",float: "left"}}>
-        <Jumbotron>
+        <Jumbotron style={{  width:"60%",marginRight:"2%",float: "left"}}>
           <h1 className="display-3">Hi,{this.props.username}! </h1>
           <p className="lead">Claim 100 Bids for Free
           Get started with a FREE TRIAL for 100 bids and more!</p>
@@ -56,12 +53,12 @@ callEditProfile(){
               }}  >Check out projects</Button>
           </p>
         </Jumbotron>
-      </div>
+     
         <Card style={{ 
             
-            width: 300,
+            width: 400,
             margin: 'auto',
-            height: 400,
+            height: 530,
 }}>
             <img src={require('./image3.png')} alt="Card image cap" style={{ 
             
@@ -72,7 +69,7 @@ callEditProfile(){
                 borderRadius: 50}}/>
             <hr />
             <CardBody>
-            <CardTitle>User Profile Page</CardTitle>
+            <CardTitle>User Profile</CardTitle>
             <Row>
             <Col xs='5'>
             Username:
@@ -83,7 +80,6 @@ callEditProfile(){
             </Row>
 
 
-
             <Row>
             <Col xs='5'>Email:
             </Col>
@@ -92,6 +88,21 @@ callEditProfile(){
             </Col>
             </Row>
             
+
+            <Row>
+            <Col xs='5'>Skills:
+            </Col>
+            <Col>
+            {this.props.skills}
+            </Col>
+            </Row>
+
+            <Row>
+
+            <Col ><p style={{color:"#959292"}}>
+            {this.props.about}</p>
+            </Col>
+            </Row>
             </CardBody>
             <br />
             <Button onClick={() => {
@@ -110,13 +121,15 @@ const mapStateToProps = (user) => {
     // if(user.user != null) {
     //    const isLoggedIn = user.user.user.loggedin;
     //   const msg = user.user.user.basic;
-      
+      console.log("user on profile page",user.user)
     //   user.user.user.signinmsg = "";
       return {
           username: user.user.user.username,
           email: user.user.user.email,
           userid: user.user.user.userid,
-          isLoggedIn: user.user.user.loggedin
+          isLoggedIn: user.user.user.loggedin,
+          skills: user.user.user.profile[0].skills,
+          about: user.user.user.profile[0].about
       };//{msg};
 //    }
   }

@@ -94,7 +94,8 @@ const user = (state = initialState, action) => {
                               "user":{
                                         "projectIndividualDesc": action.data,
                                         "projectIndividualStatus": action.status,
-                                        "state": state
+                                     //   "state": state
+                                        "useridindi": state.user.userid
                                    }
                            };
        

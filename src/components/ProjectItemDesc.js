@@ -29,7 +29,7 @@ class ProjectItemDesc extends Component {
     return (
         <div >
       <NavHeaderLogin />
-      <div style={{ backgroundColor:"#c1c0c0", width: "100%", height:"100%",position :"absolute"}}>
+      <div style={{ backgroundColor:"rgb(245, 239, 239)", width: "100%", height:"100%",position :"absolute"}}>
         <Card style={{ 
             
          marginTop: "20px",
@@ -46,49 +46,68 @@ class ProjectItemDesc extends Component {
 <hr />
 
 <Row>
-  <Col xs="3"><strong>Project Name</strong></Col>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Project Name</strong></Col>
   </Row>
 <Row>
   
-  <Col xs="3"> {this.props.data.name} </Col>
+  <Col xs="3" style={{textAlign:"left"}}> {this.props.data.name} </Col>
 
 </Row>
 
 <br />
 <Row>
-  <Col xs="3"><strong>Description</strong></Col>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Description</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>{this.props.data.details}</Col>
 </Row>
-<Row>
-  <Col xs="7">{this.props.data.details}</Col>
-</Row>
-<br />
+
 
 <Row>
-  <Col xs="3"><strong>Owner-Id:</strong></Col>
-</Row>
-<Row>
-  <Col xs="4">{this.props.data.user_id}</Col>
-</Row>
-<br />
+  <Col xs="3" style={{textAlign:"left"}}><strong>Skills</strong></Col>
 
-<Row>
-  <Col xs="3"><strong>Project-Id:</strong></Col>
+  <Col xs="7" style={{textAlign:"left"}}>{this.props.data.skills}</Col>
 </Row>
-<Row>
-  <Col xs="4">{this.props.data.projectid}</Col>
-</Row>
-<br />
-
 
 
 
 <Row>
-  <Col xs="3"><strong>Bid Amount:</strong></Col>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Budget Range</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>{this.props.data.budget}</Col>
+</Row>
+
+
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Average Bid</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>8409</Col>
+</Row>
+
+
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Employer Id</strong></Col>
+
+  <Col xs="4" style={{textAlign:"left"}}>{this.props.data.user_id}</Col>
+</Row>
+
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Project Id</strong></Col>
+
+  <Col xs="4" style={{textAlign:"left"}}>{this.props.data.projectid}</Col>
+</Row>
+
+
+<br/>
+
+
+<Row>
+  <Col xs="4" style={{textAlign:"left"}}><strong>Bid Amount:</strong></Col>
 </Row>
 <Row>
-
-
-  <Col xs="3">           <Input type="number" onChange={(event) => {
+  <Col xs="3" >           <Input type="number" onChange={(event) => {
     console.log("userid==>",this.props.userid);
     this.setState({
       bidderid:this.props.userid,
@@ -101,13 +120,37 @@ class ProjectItemDesc extends Component {
 
 </Row>
 
+
+
+<Row>
+  <Col xs="4" style={{textAlign:"left"}}><strong>Period in days:</strong></Col>
+</Row>
+<Row>
+  <Col xs="3" >           <Input type="number" onChange={(event) => {
+    console.log("userid==>",this.props.userid);
+
+    console.log(this.state);
+}}/></Col>
+
+</Row>
+
+
+
+
+
+
 <br />
 <Row >
-   <Col xs="3">         
+   <Col xs="3" style={{textAlign:"left"}}>         
 <Button color="success" onClick={() => {
     this.props.bid(this.state);
   }} >Bid Now</Button>
   </Col>
+  <Col xs="2">         
+  <Button  onClick={() => {
+      history.push('/work')
+    }} >Cancel</Button>
+    </Col>
 </Row>
 
 
@@ -129,8 +172,9 @@ const mapStateToProps = (user) => {
   console.log("project uitem desc=---->",user)
   if(user.user.user.projectIndividualStatus) {
     const data = user.user.user.projectIndividualDesc;
-    const userid = user.user.user.state.user.userid;
-    console.log("userid in projectItemDesc----->",userid)
+   // const userid = user.user.user.state.user.userid;
+   const userid = user.user.user.useridindi;
+   console.log("userid in projectItemDesc----->",userid)
     return {data,userid};
   }
 }

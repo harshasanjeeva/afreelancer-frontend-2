@@ -81,6 +81,30 @@ class Projects extends Component {
                         }} />
 
       </FormGroup>
+
+
+      <FormGroup row>
+      <p>File Upload</p>
+        
+ 
+          <Input type="file" name="upload" id="upload" placeholder="Describe your project here..." onChange={(event) => {
+  
+                        }} />
+
+      </FormGroup>
+
+
+
+      <FormGroup row>
+      <p>Skills Required</p>
+      <Input type="text" name="skills" id="skills" placeholder="e.g. Node.js, Java" onChange={(event) => {
+
+                    }} />
+
+      </FormGroup>
+
+
+
       <FormGroup row>
       <p>Estimated Budget</p>
        <br />
@@ -99,20 +123,21 @@ class Projects extends Component {
       </FormGroup>
       
       <FormGroup check row>
-        <Col sm={{ size: 10, offset: 2 }}>
-          <Button onClick={() => {
+        <Col >
+          <Button color="primary" onClick={() => {
 
             this.props.projectSubmit(this.state);
             
-          }} >Submit</Button>
+          }} >Submit</Button> <span/>
+          <Button color="warning" onClick={() => {
+            history.push('/work')
+            
+          }} >Check out other projects</Button>
+
         </Col>
       </FormGroup>
     </Form>
-    <Button onClick={() => {
 
-      history.push('/work')
-      
-    }} >Check out other projects</Button>
     </CardBody>
     </Card>
     </div>

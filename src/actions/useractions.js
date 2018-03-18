@@ -10,7 +10,7 @@ export const USER_SIGNOUT = 'USER_SIGNOUT';
 export const MY_PROJECT_DESC = 'MY_PROJECT_DESC';
 export const MY_PROJECT_ITEM_DESC = 'MY_PROJECT_ITEM_DESC';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
-// export const USER_INTINFO = 'USER_INTINFO';
+export const UPLOAD_PIC = 'UPLOAD_PIC';
 // export const USER_STAR_ACT = 'USER_STAR_ACT';
 
 

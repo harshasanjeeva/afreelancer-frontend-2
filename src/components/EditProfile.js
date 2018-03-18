@@ -45,12 +45,23 @@ callEditProfile(){
 
         <Card style={{ 
             
-            width: 500,
+            width: 600,
             margin: 'auto',
-            height: 400,
+            height: 750,
 }}>
-<FormGroup>
-<Label for="exampleFile">File</Label>
+<img src={require('./image3.png')} alt="Card image cap" style={{ 
+            
+  width: 120,
+  margin: 'auto',
+  marginTop:'10px',
+ height: 140,
+  borderRadius: 50}}/>
+
+<br/>
+
+<FormGroup row>
+
+<Col>
 <Input type="file" name="file" id="exampleFile" onChange={(event) => {
   const payload = new FormData();
 
@@ -58,12 +69,15 @@ payload.append('mypic', event.target.files[0]);
 console.log("filllle==>",payload)
 
  this.props.upload(payload);
-              }}/>
-<FormText color="muted">
+              }} style={{paddingLeft: "10px"}}/>
+              </Col>
+
+<FormText color="muted" style={{paddingLeft: "20px", paddingRight: "10px"}}>
   This is some placeholder block-level help text for the above input.
   It's a bit lighter and easily wraps to a new line.
 </FormText>
 </FormGroup>
+
             <hr />
             <CardBody>
             <CardTitle>User Profile Page</CardTitle>

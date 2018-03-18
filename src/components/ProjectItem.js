@@ -80,25 +80,30 @@ class ProjectItem extends Component {
           <MuiThemeProvider>
           <Card style={{marginLeft: 30, marginRight:30}}>
 <Table>
-  <TableHeader>
+  <TableHeader displaySelectAll={false}
+  adjustForCheckbox={false}>
     <TableRow style={{backgroundColor:"grey"}}>
-      <TableHeaderColumn style={{color:"white"}}>Project Name</TableHeaderColumn>
-      <TableHeaderColumn style={{color:"white"}}>Project Description</TableHeaderColumn>
+      <TableHeaderColumn style={{color:"white",paddingRight:"0px"}}>Project Name</TableHeaderColumn>
+      <TableHeaderColumn style={{color:"white",paddingLeft:"0px",paddingRight:"0px"}}>Project Description</TableHeaderColumn>
+      <TableHeaderColumn style={{color:"white"}}>Skills</TableHeaderColumn>
+      <TableHeaderColumn style={{color:"white"}}>Employer</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Project Budget</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Bids</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Details</TableHeaderColumn>
     </TableRow>
   </TableHeader>
-  <TableBody>
+  <TableBody displayRowCheckbox={false}>
   {this.props.projectList.map(row => {
     console.log("row",row);
    return <TableRow  >
-  <TableRowColumn key={row.name} >{row.name}</TableRowColumn>
-  <TableRowColumn key={row.details} >{row.details}</TableRowColumn>
+  <TableRowColumn key={row.name} style={{paddingRight:"0px"}}>{row.name}</TableRowColumn>
+  <TableRowColumn key={row.details} style={{paddingLeft:"0px",paddingRight:"0px"}}>{row.details}</TableRowColumn>
+  <TableRowColumn key={row.details} >{row.skills}</TableRowColumn>
+  <TableRowColumn key={row.details} >{row.username}</TableRowColumn>
   <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>
   <TableRowColumn key={row.user_id} >-</TableRowColumn>
   <TableRowColumn key={row.projectid}>
-        <Button color="success"
+        <Button color="warning"
             onClick={() => {
               console.log("row===",row,row.projectid)
               this.setState({
@@ -132,9 +137,11 @@ class ProjectItem extends Component {
 
 
     const mapStateToProps = (user) => {
+      console.log("user->user",user)
       if(user.user != null) {
         console.log("im here in mapStateToProps")
         const status = user.user.user.status;
+      
         const projectList = user.user.user.projectList;
         return {status, projectList};
     }

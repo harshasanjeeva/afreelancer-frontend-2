@@ -62,17 +62,18 @@ class MyProjectItem extends Component {
           <Card style={{marginLeft: 30, marginRight:30}}>
 
 <Table>
-  <TableHeader>
+  <TableHeader displaySelectAll={false}
+  adjustForCheckbox={false}>
     <TableRow style={{backgroundColor:"grey"}}>
 
-      <TableHeaderColumn style={{color:"white"}}>Project Name</TableHeaderColumn>
-      <TableHeaderColumn style={{color:"white"}}>Project Description</TableHeaderColumn>
+      <TableHeaderColumn style={{color:"white",paddingRight:"0px"}}>Project Name</TableHeaderColumn>
+      <TableHeaderColumn style={{color:"white",paddingLeft:"0px",paddingRight:"0px"}}>Project Description</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Project Budget</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Number of Bids</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Details</TableHeaderColumn>
     </TableRow>
   </TableHeader>
-  <TableBody>
+  <TableBody  displayRowCheckbox={false}>
 
   {this.props.projectList.map(row => {
     console.log("row",row);
@@ -80,10 +81,10 @@ if (row.user_id ==11){
     return(
   
         <TableRow  >
-     <TableRowColumn key={row.name} >{row.name}</TableRowColumn>
-     <TableRowColumn key={row.details} >{row.details}</TableRowColumn>
+     <TableRowColumn key={row.name} style={{paddingRight:"0px"}}>{row.name}</TableRowColumn>
+     <TableRowColumn key={row.details} style={{paddingLeft:"0px",paddingRight:"0px"}}>{row.details}</TableRowColumn>
      <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>
-     <TableRowColumn key={row.user_id} >-</TableRowColumn>
+     <TableRowColumn key={row.user_id} >{row.bids}</TableRowColumn>
      <TableRowColumn key={row.projectid}>
            <Button color="success"
                onClick={() => {

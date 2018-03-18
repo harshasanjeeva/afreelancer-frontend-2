@@ -34,7 +34,7 @@ class ProjectItemDesc extends Component {
             
          marginTop: "20px",
             width: "700px",
-            height:"500px",
+            height:"530px",
             marginLeft: "150px"
 }}>
 
@@ -98,6 +98,14 @@ class ProjectItemDesc extends Component {
 
   <Col xs="4" style={{textAlign:"left"}}>{this.props.data.projectid}</Col>
 </Row>
+
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Number of Bids</strong></Col>
+  <Col xs="4" style={{textAlign:"left"}}>{this.props.data.bids}</Col>
+</Row>
+
+
 
 
 <br/>

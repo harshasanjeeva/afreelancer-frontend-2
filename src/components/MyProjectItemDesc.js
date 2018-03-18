@@ -52,54 +52,105 @@ class MyProjectItemDesc extends Component {
 <hr />
 
 <Row>
-  <Col xs="3"><strong>Project Name</strong></Col>
-  </Row>
-<Row>
+  <Col xs="3"  style={{textAlign:"left"}}><strong>Project Name</strong></Col>
   
-  <Col xs="3"> {this.props.name} </Col>
+  <Col xs="3"  style={{textAlign:"left"}}> {this.props.name} </Col>
 
 </Row>
 
 <br />
-<Row>
-  <Col xs="3"><strong>Description</strong></Col>
-</Row>
-<Row>
-  <Col xs="7">{this.props.details}</Col>
-</Row>
-<br />
+
 
 <Row>
-  <Col xs="3"><strong>Owner-Id:</strong></Col>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Description</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>{this.props.details}</Col>
 </Row>
-<Row>
-  <Col xs="4">{this.props.user_id}</Col>
-</Row>
-<br />
+
 
 <Row>
-  <Col xs="3"><strong>Project-Id:</strong></Col>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Skills</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>{this.props.skills}</Col>
 </Row>
+
+
+
 <Row>
-  <Col xs="4">{this.props.projectid}</Col>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Budget Range</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>{this.props.budget}</Col>
 </Row>
-<br />
+
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Freelancer Name</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>{this.props.username}</Col>
+</Row>
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Average Bid</strong></Col>
+
+  <Col xs="7" style={{textAlign:"left"}}>8409</Col>
+</Row>
+
+
+
+
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Project Id</strong></Col>
+
+  <Col xs="4" style={{textAlign:"left"}}>{this.props.projectid}</Col>
+</Row>
+
+
+<Row>
+  <Col xs="3" style={{textAlign:"left"}}><strong>Number of Bids</strong></Col>
+  <Col xs="4" style={{textAlign:"left"}}>{this.props.bids}</Col>
+</Row>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br />
 <MuiThemeProvider>
        
 
 <Table>
-<TableHeader>
+<TableHeader displaySelectAll={false}
+adjustForCheckbox={false}>
   <TableRow style={{backgroundColor:"grey"}}>
 
-    <TableHeaderColumn style={{color:"white"}}>Project Name</TableHeaderColumn>
-    <TableHeaderColumn style={{color:"white"}}>Project Description</TableHeaderColumn>
-    <TableHeaderColumn style={{color:"white"}}>Project Budget</TableHeaderColumn>
-    <TableHeaderColumn style={{color:"white"}}>Bids</TableHeaderColumn>
+    <TableHeaderColumn style={{color:"white"}}>Freelancer Name</TableHeaderColumn>
+    <TableHeaderColumn style={{color:"white"}}>Bid amount</TableHeaderColumn>
+    <TableHeaderColumn style={{color:"white"}}>Period in days</TableHeaderColumn>
+    <TableHeaderColumn style={{color:"white"}}>Status</TableHeaderColumn>
   </TableRow>
 </TableHeader>
-<TableBody>
+<TableBody displayRowCheckbox={false}>
 
 {this.props.data.map(row => {
     console.log("row",row);
@@ -107,10 +158,12 @@ class MyProjectItemDesc extends Component {
    
        return <TableRow  >
    
-       <TableRowColumn >{row.projectid}</TableRowColumn>
-       <TableRowColumn >{row.ownerid}</TableRowColumn>
-       <TableRowColumn  >{row.bidderid}</TableRowColumn>
+       <TableRowColumn >{row.name}</TableRowColumn>
        <TableRowColumn >{row.amount}</TableRowColumn>
+       <TableRowColumn  >{row.period}</TableRowColumn>
+       <TableRowColumn >
+       <Button color="warning" >Hire Now!</Button>
+       </TableRowColumn>
        
        </TableRow>
    
@@ -144,8 +197,13 @@ return{
     data: user.user.user.myprojectIndividualDesc.result,
      name: user.user.user.myprojectIndividualDesc.data.name,
      details: user.user.user.myprojectIndividualDesc.data.details,
-     projectid: user.user.user.myprojectIndividualDesc.data.name,
-     ownerid: user.user.user.myprojectIndividualDesc.data.name,
+     projectid: user.user.user.myprojectIndividualDesc.data.projectid,
+     ownerid: user.user.user.myprojectIndividualDesc.data.user_id,
+     username: user.user.user.myprojectIndividualDesc.data.username,
+     budget: user.user.user.myprojectIndividualDesc.data.budget,
+     ownerid: user.user.user.myprojectIndividualDesc.data.user_id,
+      bids: user.user.user.myprojectIndividualDesc.data.bids,
+      skills: user.user.user.myprojectIndividualDesc.data.skills,
 }
 }
     

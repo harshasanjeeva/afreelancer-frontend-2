@@ -48,6 +48,7 @@ class Signin extends Component {
       <div>
         <Button outline color="primary"  size="md" onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <img src={require('./image2.png')} width="210" height="65" alt="" style={{    padding: "10px",marginLeft: "137px"}} />
           <ModalHeader>Sign In</ModalHeader>
           <ModalBody>
         

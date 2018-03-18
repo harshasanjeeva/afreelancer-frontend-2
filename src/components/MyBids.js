@@ -107,7 +107,7 @@ const mapStateToProps = (user) => {
 // //     return {data,userid};
 //   }
 return{
-    data: user.user.user.myprojectIndividualDesc.result,
+    data: user.user.user.myprojectIndividualDesc,
     //  name: user.user.user.myprojectIndividualDesc.data.name,
     //  details: user.user.user.myprojectIndividualDesc.data.details,
     //  projectid: user.user.user.myprojectIndividualDesc.data.name,

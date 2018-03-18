@@ -101,7 +101,7 @@ class ProjectItem extends Component {
   <TableRowColumn key={row.details} >{row.skills}</TableRowColumn>
   <TableRowColumn key={row.details} >{row.username}</TableRowColumn>
   <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>
-  <TableRowColumn key={row.user_id} >-</TableRowColumn>
+  <TableRowColumn key={row.bids} >{row.bids}</TableRowColumn>
   <TableRowColumn key={row.projectid}>
         <Button color="warning"
             onClick={() => {

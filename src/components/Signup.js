@@ -45,6 +45,7 @@ class Signup extends Component {
       <div>
         <Button outline color="primary"  size="md"  onClick={this.toggle}>{this.props.buttonLabel}</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+        <img src={require('./image2.png')} width="210" height="65" alt="" style={{    padding: "10px",marginLeft: "137px"}} />
           <ModalHeader>Sign Up</ModalHeader>
           <ModalBody>
         
@@ -60,8 +61,8 @@ class Signup extends Component {
                                 }} />
                 </FormGroup>
                 <FormGroup>
-                <Label for="username">Username</Label>
-                <Input type="text" name="username" id="username" placeholder="Username" onChange={(event) => {
+                <Label for="username">Name</Label>
+                <Input type="text" name="username" id="username" placeholder="Name" onChange={(event) => {
                   console.log(this.state);                
                   this.setState({
                                       username: event.target.value

@@ -13,7 +13,7 @@ class Work extends Component {
       <div>
       <NavHeaderLogin />
  
-        <h4>Browse Projects</h4>
+        <h4>Home</h4>
 
         <div>
         <Form>

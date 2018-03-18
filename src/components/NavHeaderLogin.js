@@ -46,6 +46,11 @@ class NavHeaderLogin extends Component {
         <NavItem>
         <NavLink href="/myprojects/">My Projects</NavLink>
         </NavItem>
+        
+        <NavItem>
+        <NavLink href="/mybids/">My Bids</NavLink>
+        </NavItem>
+        
         </Nav>
         
         <NavbarToggler onClick={this.toggle} />

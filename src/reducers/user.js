@@ -63,7 +63,8 @@ const user = (state = initialState, action) => {
                                 "starred" : "harsha",
                                 "activity" : "harsha",
                                 "signinmsg":action.msg,
-                                "projectList":action.projectList                               
+                                "projectList":action.projectList,
+                                "profile": action.profile                              
                             }
                     };
 
@@ -199,33 +200,33 @@ const user = (state = initialState, action) => {
            break;     
  
     //=========================PROJECT_DESC           
-    case MY_PROJECT_ITEM_DESC :
-    console.log("reducer-->action--->PROJECT_DESC")
-             if(action.status) {
-               console.log("reducer-->action--->PROJECT_DESC 2",action.data)
-               console.log("state---project-->",state)
-               return {
-                  ...state,
-                  "user":{
-                            "myprojectIndividualDescItem": action.data,
-                            "myprojectIndividualStatusItem": true,
-                       }
-               };
+    // case MY_PROJECT_ITEM_DESC :
+    // console.log("reducer-->action--->PROJECT_DESC")
+    //          if(action.status) {
+    //            console.log("reducer-->action--->PROJECT_DESC 2",action.data)
+    //            console.log("state---project-->",state)
+    //            return {
+    //               ...state,
+    //               "user":{
+    //                         "myprojectIndividualDescItem": action.data,
+    //                         "myprojectIndividualStatusItem": true,
+    //                    }
+    //            };
 
-           }
-           else {
-               console.log(action.msg);
-               return {
-                  ...state,
-                  "user":{                            
-                           "loggedin" : false,
-                           "signinmsg" : action.msg
-                       }
-               };
+    //        }
+    //        else {
+    //            console.log(action.msg);
+    //            return {
+    //               ...state,
+    //               "user":{                            
+    //                        "loggedin" : false,
+    //                        "signinmsg" : action.msg
+    //                    }
+    //            };
 
-           }
+    //        }
 
-           break;               
+    //        break;               
 
 
         default :

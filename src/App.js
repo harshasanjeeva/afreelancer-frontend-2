@@ -14,7 +14,10 @@ import {Route, Switch} from 'react-router-dom';
 import Profile from '../src/components/Profile';
 import {withRouter } from 'react-router-dom';
 import ProjectItemDesc from '../src/components/ProjectItemDesc';
-import MyProjects from '../src/components/MyProjects'
+import MyProjects from '../src/components/MyProjects';
+import MyBids from '../src/components/MyBids';
+import EditProfile from '../src/components/EditProfile';
+
 class App extends Component {
   render() {
     return (
@@ -33,6 +36,8 @@ class App extends Component {
       <Route exact path='/ProjectItemDesc' component={ProjectItemDesc}/>
       <Route exact path='/MyProjectItemDesc' component={MyProjectItemDesc}/>
       <Route exact path='/myprojects' component={MyProjects}/>
+      <Route exact path='/mybids' component={MyBids}/>
+      <Route exact path='/editprofile' component={EditProfile}/>
       </Switch>
       </Router>
       </div>

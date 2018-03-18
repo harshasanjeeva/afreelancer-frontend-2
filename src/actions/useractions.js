@@ -9,7 +9,7 @@ export const PROJECT_BID = 'PROJECT_BID';
 export const USER_SIGNOUT = 'USER_SIGNOUT';
 export const MY_PROJECT_DESC = 'MY_PROJECT_DESC';
 export const MY_PROJECT_ITEM_DESC = 'MY_PROJECT_ITEM_DESC';
-// export const USER_EDUINFO = 'USER_EDUINFO';
+export const EDIT_PROFILE = 'EDIT_PROFILE';
 // export const USER_INTINFO = 'USER_INTINFO';
 // export const USER_STAR_ACT = 'USER_STAR_ACT';
 
@@ -66,7 +66,8 @@ console.log("hiiiiiiiiii",resData)
 		username: resData.username,
 		email: resData.email,
 		id: resData.id,
-		projectList: resData.projectList
+		projectList: resData.projectList,
+		profile: resData.profile
 	}
 	
 }
@@ -291,8 +292,12 @@ export function myprojectDesc2(resData) {
 		}
 		
 	}
+
 //=================MyyyyyyyProjectDesc================end
 
+
+
+//==================MyyyyyyyProjectDescItemmmmmm==============start
 export function myprojectDescItem2(resData) {
 	
 	console.log("PROJECT_DESC 2-->actions",resData)
@@ -304,3 +309,81 @@ export function myprojectDescItem2(resData) {
 		}
 		
 	}
+
+//==================MyyyyyyyProjectDescItem==============end
+	
+
+	//==================MyyyyyyyProjectDesc==============start
+export function editProfile(userDeails) {
+	console.log("in myprojectDesc-->",userDeails);
+	return function(dispatch){
+		try {
+		API.editProfile(userDeails)
+		.then((response) => {
+			try {
+				console.log("in myprojectDesc 2");
+				dispatch(editProfile2(response));
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function editProfile2(resData) {
+	
+	console.log("PROJECT_DESC 2-->actions",resData)
+		return {
+			type: EDIT_PROFILE,
+			msg:"Project edit",
+			status:true,
+			data:resData
+		}
+		
+	}
+
+
+
+//==============================================================
+
+
+//==================MyyyyyyyProjectDesc==============start
+export function fileUpload(userDeails) {
+	console.log("in myprojectDesc-->",userDeails);
+	return function(dispatch){
+		try {
+		API.fileUpload(userDeails)
+		.then((response) => {
+			try {
+				console.log("in myprojectDesc 2");
+				dispatch(fileUpload2(response));
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function fileUpload2(resData) {
+	
+	console.log("PROJECT_DESC 2-->actions",resData)
+		return {
+			type: UPLOAD_PIC,
+			msg:"Project edit",
+			status:true,
+			data:resData
+		}
+		
+}

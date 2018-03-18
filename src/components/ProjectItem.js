@@ -79,11 +79,9 @@ class ProjectItem extends Component {
           <div style={{backgroundColor:"rgb(245, 239, 239)", width: "100%", height:"100%",position :"absolute" ,paddingTop:"20px"}}>
           <MuiThemeProvider>
           <Card style={{marginLeft: 30, marginRight:30}}>
-
 <Table>
   <TableHeader>
     <TableRow style={{backgroundColor:"grey"}}>
-
       <TableHeaderColumn style={{color:"white"}}>Project Name</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Project Description</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Project Budget</TableHeaderColumn>
@@ -92,12 +90,9 @@ class ProjectItem extends Component {
     </TableRow>
   </TableHeader>
   <TableBody>
-
   {this.props.projectList.map(row => {
     console.log("row",row);
-  
    return <TableRow  >
-  
   <TableRowColumn key={row.name} >{row.name}</TableRowColumn>
   <TableRowColumn key={row.details} >{row.details}</TableRowColumn>
   <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>

@@ -8,7 +8,6 @@ import { Container, Row, Col } from 'reactstrap';
 import NavHeaderLogin from './NavHeaderLogin';
 import history from './History'
 import { Link } from 'react-router-dom';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
     Table,
@@ -20,7 +19,7 @@ import {
   } from 'material-ui/Table';
 
 
-class MyProjectItemDesc extends Component {
+class MyBids extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -47,47 +46,14 @@ class MyProjectItemDesc extends Component {
 }}>
 <Container>
 <Row>
-  <Col><h4>Project Description</h4></Col>
+  <Col><h4>Projects that I have bid</h4></Col>
 </Row>
 <hr />
 
-<Row>
-  <Col xs="3"><strong>Project Name</strong></Col>
-  </Row>
-<Row>
-  
-  <Col xs="3"> {this.props.name} </Col>
 
-</Row>
-
-<br />
-<Row>
-  <Col xs="3"><strong>Description</strong></Col>
-</Row>
-<Row>
-  <Col xs="7">{this.props.details}</Col>
-</Row>
-<br />
-
-<Row>
-  <Col xs="3"><strong>Owner-Id:</strong></Col>
-</Row>
-<Row>
-  <Col xs="4">{this.props.user_id}</Col>
-</Row>
-<br />
-
-<Row>
-  <Col xs="3"><strong>Project-Id:</strong></Col>
-</Row>
-<Row>
-  <Col xs="4">{this.props.projectid}</Col>
-</Row>
-<br />
 
 <br />
 <MuiThemeProvider>
-       
 
 <Table>
 <TableHeader>
@@ -104,7 +70,7 @@ class MyProjectItemDesc extends Component {
 {this.props.data.map(row => {
     console.log("row",row);
    
-   
+    if (row.bidderid ==11){
        return <TableRow  >
    
        <TableRowColumn >{row.projectid}</TableRowColumn>
@@ -114,7 +80,7 @@ class MyProjectItemDesc extends Component {
        
        </TableRow>
    
-   }
+   }}
    )}
 
 
@@ -142,10 +108,10 @@ const mapStateToProps = (user) => {
 //   }
 return{
     data: user.user.user.myprojectIndividualDesc.result,
-     name: user.user.user.myprojectIndividualDesc.data.name,
-     details: user.user.user.myprojectIndividualDesc.data.details,
-     projectid: user.user.user.myprojectIndividualDesc.data.name,
-     ownerid: user.user.user.myprojectIndividualDesc.data.name,
+    //  name: user.user.user.myprojectIndividualDesc.data.name,
+    //  details: user.user.user.myprojectIndividualDesc.data.details,
+    //  projectid: user.user.user.myprojectIndividualDesc.data.name,
+    //  ownerid: user.user.user.myprojectIndividualDesc.data.name,
 }
 }
     
@@ -158,7 +124,7 @@ return{
 
 
   
-export default  withRouter(connect(mapStateToProps)(MyProjectItemDesc));
+export default  withRouter(connect(mapStateToProps)(MyBids));
 
 
 

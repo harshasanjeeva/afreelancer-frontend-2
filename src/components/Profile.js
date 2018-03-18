@@ -25,7 +25,10 @@ callworks(){
    history.push('/projects');
 }
 
-
+callEditProfile(){
+  // window.location.href = "http://localhost:3000/work"
+  history.push('/editprofile');
+}
   render() {
       console.log("userrssss",this.props.users)
     return (  <div> 
@@ -93,9 +96,9 @@ callworks(){
             <br />
             <Button onClick={() => {
 
-                this.callworks();
+                this.callEditProfile();
                 
-              }} >Go to job postings</Button>
+              }} >Edit Profile</Button>
         </Card>
 </div>
         : history.push('/')}

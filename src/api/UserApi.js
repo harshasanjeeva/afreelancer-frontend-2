@@ -152,3 +152,44 @@ export const myprojectDesc = (payload) =>
             console.log("This is error");
             return error;
         });
+
+        
+//============================editProfile=====================
+       
+export const editProfile = (payload) =>
+    fetch(`${api}/users/editprofile`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("here in api myprojectDesc proposal"); 
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+        
+
+//============================fileUpload=====================
+       
+export const fileUpload = (payload) =>
+    fetch(`${api}/users/fileUpload`, {
+        method: 'POST',
+        credentials:'include',
+        body: payload
+    }).then(response => response.json())
+        .then(response => {
+            console.log("here in api myprojectDesc proposal"); 
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });

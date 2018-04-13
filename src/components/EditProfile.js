@@ -176,15 +176,15 @@ const mapStateToProps = (user) => {
     //   const msg = user.user.user.basic;
       
     //   user.user.user.signinmsg = "";
-    console.log("---->",user.user.user.profile[0])
+    console.log("---->",user.user.user.profile)
       return {
-         name: user.user.user.profile[0].name,
-          email: user.user.user.profile[0].email,
+         name: user.user.user.profile.name,
+          email: user.user.user.profile.email,
           userid: user.user.user.userid,
           isLoggedIn: user.user.user.loggedin,
-          phone: user.user.user.profile[0].phone,
-          about: user.user.user.profile[0].about,
-          skills: user.user.user.profile[0].skills
+          phone: user.user.user.profile.phone,
+          about: user.user.user.profile.about,
+          skills: user.user.user.profile.skills
           //username:user.user.user.profile.name,
 
       };//{msg};

@@ -9,11 +9,11 @@ import { Route, withRouter } from 'react-router-dom';
 
 class MyProjects extends Component {
   render() {
-    return (
-      <div>
+    return (<div>
       <NavHeaderLogin />
- 
-        <h4>My Projects</h4>
+
+        <h4>Dashboard</h4>
+        <h6>My Projects</h6>
 
         <div>
         <Form>

@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import history from './History';
 import { Button} from 'reactstrap';
 import {connect} from 'react-redux';
+import NavHeaderLogin from './NavHeaderLogin';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import {myprojectDesc} from "../actions/useractions";
 import {
@@ -18,52 +19,27 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
 
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-//injectTapEventPlugin();
-
-
-  
-
-  
-//   const ProjectItem = ({products}) = (    console.log("products",products[0]) );
-
-class MyProjectItem extends Component {
+class CurrentWork extends Component {
   constructor(props) {
     super(props);
     this.state = {
       "myprojectIndividualData":""
     };
   }
-//  TableRow1 = ({row}) => (
-//         <TableRow>
-//         <TableRowColumn key={row.name}>{row.name}</TableRowColumn>
-//         <TableRowColumn key={row.id}>{row.id}</TableRowColumn>
-//         <TableRowColumn key={row.price}>{row.price}</TableRowColumn>
-//       </TableRow>
-//       )
-// handleOnClick = () => {
-//   // since our views are dependent on `haveData` and `fetching`, we can just set those to false
 
-// }
-
-// render(){
-// return null
-// }
-   
-// }
 render() {
   if(this.props.status){
     console.log("Navigation for the project item desc")
     history.push('/MyProjectItemDesc');
-   
   }
 
   if(!this.props.status){ 
     console.log("this.props.projectList",this.props.projectList);
-  return (   
+  return (<div>    
+    <NavHeaderLogin />     
       <div style={{backgroundColor:"rgb(245, 239, 239)", width: "100%", height:"100%",position :"absolute" ,paddingTop:"20px"}}>
-      <MuiThemeProvider>
+     
+  <MuiThemeProvider>
       <Card style={{marginLeft: 30, marginRight:30}}>
 
 <Table>
@@ -117,6 +93,7 @@ return(
 </Card>
 </MuiThemeProvider>
 </div>
+</div>
 )}else{
  return null
 }}
@@ -142,6 +119,6 @@ return(
         return {status, projectList};
     }
     }
-export default connect(mapStateToProps,mapDispatchToProps)(MyProjectItem);
+export default connect(mapStateToProps,mapDispatchToProps)(CurrentWork);
 
 

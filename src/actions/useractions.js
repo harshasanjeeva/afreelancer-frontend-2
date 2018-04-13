@@ -11,6 +11,7 @@ export const MY_PROJECT_DESC = 'MY_PROJECT_DESC';
 export const MY_PROJECT_ITEM_DESC = 'MY_PROJECT_ITEM_DESC';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
 export const UPLOAD_PIC = 'UPLOAD_PIC';
+export const HIRE = 'HIRE';
 // export const USER_STAR_ACT = 'USER_STAR_ACT';
 
 
@@ -67,7 +68,8 @@ console.log("hiiiiiiiiii",resData)
 		email: resData.email,
 		id: resData.id,
 		projectList: resData.projectList,
-		profile: resData.profile
+		profile: resData.profile,
+		bids: resData.bids
 	}
 	
 }
@@ -387,3 +389,40 @@ export function fileUpload2(resData) {
 		}
 		
 }
+
+//==================================end=========================
+
+
+//==================Hire==============================start
+export function hire(userDeails) {
+	console.log("in projectDesc",userDeails);
+	return function(dispatch){
+		try {
+		API.hire(userDeails)
+		.then((response) => {
+			try {
+				console.log("in projectDesc 2");
+				dispatch(hire2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function hire2(resData) {
+	
+	console.log("Hire in actions2->",resData)
+		return {
+			// type: PROJECT_BID,
+			// msg:resData.message,
+		}
+		
+	}
+//=================ProjectBid================end

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Navbar, Nav,NavItem, Button, Collapse,  NavbarToggler, DropdownMenu, DropdownItem,DropdownToggle,UncontrolledDropdown,NavbarBrand,  NavLink } from 'reactstrap';
+import {Navbar, Dropdown,Nav,NavItem, Button, Collapse,  NavbarToggler, DropdownMenu, DropdownItem,DropdownToggle,UncontrolledDropdown,NavbarBrand,  NavLink } from 'reactstrap';
 
 import { Route, withRouter } from 'react-router-dom';
 // import text from './../images/1.svg';
@@ -19,14 +19,23 @@ class NavHeaderLogin extends Component {
     
         this.toggle = this.toggle.bind(this);
         this.state = {
-          isOpen: false
+          isOpen: false,
+          dropdownOpen: false
         };
       }
       toggle() {
         this.setState({
-          isOpen: !this.state.isOpen
+          isOpen: !this.state.isOpen,
+          dropdownOpen: !this.state.dropdownOpen
         });
       }
+
+
+      // <NavItem>
+      // <NavLink href="/myprojects/">My Projects</NavLink> 
+      // </NavItem>
+
+
   render() {
     return (
       <Navbar light expand="md">
@@ -43,10 +52,24 @@ class NavHeaderLogin extends Component {
         <NavItem>
         <NavLink href="/work/">Work</NavLink>
         </NavItem>
-        <NavItem>
-        <NavLink href="/myprojects/">My Projects</NavLink>
-        </NavItem>
-        
+
+        <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle nav caret>
+        My Projects
+      </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Options</DropdownItem>
+            
+              <DropdownItem href="/myprojects/">Projects posted</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem href="/currentwork/">Current Work</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+
+
+
+
+
         <NavItem>
         <NavLink href="/mybids/">My Bids</NavLink>
         </NavItem>

@@ -178,10 +178,10 @@ class ProjectItemDesc extends Component {
 
 const mapStateToProps = (user) => {
   console.log("project uitem desc=---->",user)
-  if(user.user.user.projectIndividualStatus) {
-    const data = user.user.user.projectIndividualDesc;
+  if(user.user.userindiv.projectIndividualStatus) {
+    const data = user.user.userindiv.projectIndividualDesc;
    // const userid = user.user.user.state.user.userid;
-   const userid = user.user.user.useridindi;
+   const userid = user.user.userindiv.useridindi;
    console.log("userid in projectItemDesc----->",userid)
     return {data,userid};
   }

@@ -64,7 +64,8 @@ const user = (state = initialState, action) => {
                                 "activity" : "harsha",
                                 "signinmsg":action.msg,
                                 "projectList":action.projectList,
-                                "profile": action.profile                              
+                                "profile": action.profile,
+                                "bidlist": action.bids                              
                             }
                     };
 
@@ -91,10 +92,10 @@ const user = (state = initialState, action) => {
                            console.log("state---project-->",state)
                            return {
                               ...state,
-                              "user":{
+                              "userindiv":{
                                         "projectIndividualDesc": action.data,
                                         "projectIndividualStatus": action.status,
-                                        "state": state,
+                                      //  "state": state,
                                         "useridindi": state.user.userid
                                    }
                            };
@@ -178,10 +179,10 @@ const user = (state = initialState, action) => {
                console.log("state---project-->",state)
                return {
                   ...state,
-                  "user":{
+                  "myuserindiv":{
                             "myprojectIndividualDesc": action.data,
                             "myprojectIndividualStatus": action.status,
-                            "state": state
+                            // "state": state
                        }
                };
 

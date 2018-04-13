@@ -8,6 +8,7 @@ import { Container, Row, Col } from 'reactstrap';
 import NavHeaderLogin from './NavHeaderLogin';
 import history from './History'
 import { Link } from 'react-router-dom';
+import {hire} from "../actions/useractions";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {
@@ -24,10 +25,12 @@ class MyProjectItemDesc extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "userid":"",
-            "projectid":"",
-            "bidderid":"",
-            "amount":""
+          userid:"",
+          projectid:this.props.projectid,
+          ownername:this.props.username,
+          bidwinnername:"",
+          bidwinnerid:""
+
           };
       }
 
@@ -51,7 +54,7 @@ class MyProjectItemDesc extends Component {
 </Row>
 <hr />
 
-<Row>
+<Row >
   <Col xs="3"  style={{textAlign:"left"}}><strong>Project Name</strong></Col>
   
   <Col xs="3"  style={{textAlign:"left"}}> {this.props.name} </Col>
@@ -162,7 +165,23 @@ adjustForCheckbox={false}>
        <TableRowColumn >{row.amount}</TableRowColumn>
        <TableRowColumn  >{row.period}</TableRowColumn>
        <TableRowColumn >
-       <Button color="warning" >Hire Now!</Button>
+       <Button color="warning" 
+       onClick={() => {
+        // console.log("row===",row,row.projectid)
+        this.setState({
+          // userid:this.props.name,
+
+          bidwinnername:row.name,
+          bidwinnerid:row.bidderid
+        });
+ 
+        //  setTimeout(function(state){
+          console.log("this.state--->",this.state)
+          // this.props.hire1(this.state)
+        //  },100);
+       
+        
+        }} >Hire Now!</Button>
        </TableRowColumn>
        
        </TableRow>
@@ -183,7 +202,12 @@ adjustForCheckbox={false}>
    )
   }
 }
-
+const mapDispatchToProps = (dispatch) => {
+  console.log("dispatch",dispatch)
+  return {
+    hire1 : (data) => dispatch(hire(data))
+  }
+}
 
 const mapStateToProps = (user) => {
   console.log("project uitem descasdsfdsfdasd=---->",user.user)
@@ -194,16 +218,19 @@ const mapStateToProps = (user) => {
 // //     return {data,userid};
 //   }
 return{
-    data: user.user.user.myprojectIndividualDesc.result,
-     name: user.user.user.myprojectIndividualDesc.data.name,
-     details: user.user.user.myprojectIndividualDesc.data.details,
-     projectid: user.user.user.myprojectIndividualDesc.data.projectid,
-     ownerid: user.user.user.myprojectIndividualDesc.data.user_id,
-     username: user.user.user.myprojectIndividualDesc.data.username,
-     budget: user.user.user.myprojectIndividualDesc.data.budget,
-     ownerid: user.user.user.myprojectIndividualDesc.data.user_id,
-      bids: user.user.user.myprojectIndividualDesc.data.bids,
-      skills: user.user.user.myprojectIndividualDesc.data.skills,
+    //data: user.user.myuserindiv.myprojectIndividualDesc.result,
+    //changed on 04/12
+    data: user.user.user.bidlist,
+    
+    name: user.user.myuserindiv.myprojectIndividualDesc.data.name,
+     details: user.user.myuserindiv.myprojectIndividualDesc.data.details,
+     projectid: user.user.myuserindiv.myprojectIndividualDesc.data.projectid,
+     ownerid: user.user.myuserindiv.myprojectIndividualDesc.data.user_id,
+     username: user.user.myuserindiv.myprojectIndividualDesc.data.username,
+     budget: user.user.myuserindiv.myprojectIndividualDesc.data.budget,
+     ownerid: user.user.myuserindiv.myprojectIndividualDesc.data.user_id,
+      bids: user.user.myuserindiv.myprojectIndividualDesc.data.bids,
+      skills: user.user.myuserindiv.myprojectIndividualDesc.data.skills,
 }
 }
     
@@ -216,7 +243,7 @@ return{
 
 
   
-export default  withRouter(connect(mapStateToProps)(MyProjectItemDesc));
+export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(MyProjectItemDesc));
 
 
 

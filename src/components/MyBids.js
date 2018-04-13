@@ -36,7 +36,7 @@ class MyBids extends Component {
     return (
         <div>
       <NavHeaderLogin />
-      <div style={{ backgroundColor:"#c1c0c0", width: "100%", height:"100%",position :"absolute"}}>
+      <div style={{ backgroundColor:"rgb(245, 239, 239)", width: "100%", height:"100%",position :"absolute"}}>
         <Card style={{ 
             
          marginTop: "20px",
@@ -46,7 +46,10 @@ class MyBids extends Component {
 }}>
 <Container>
 <Row>
-  <Col><h4>Projects that I have bid</h4></Col>
+  <Col><h4>Dashboard</h4></Col>
+</Row>
+<Row>
+  <Col><h6>My bids</h6></Col>
 </Row>
 <hr />
 
@@ -56,28 +59,31 @@ class MyBids extends Component {
 <MuiThemeProvider>
 
 <Table>
-<TableHeader>
+<TableHeader displaySelectAll={false}
+adjustForCheckbox={false}>
   <TableRow style={{backgroundColor:"grey"}}>
 
     <TableHeaderColumn style={{color:"white"}}>Project Name</TableHeaderColumn>
-    <TableHeaderColumn style={{color:"white"}}>Project Description</TableHeaderColumn>
+    <TableHeaderColumn style={{color:"white"}}>Employer</TableHeaderColumn>
     <TableHeaderColumn style={{color:"white"}}>Project Budget</TableHeaderColumn>
-    <TableHeaderColumn style={{color:"white"}}>Bids</TableHeaderColumn>
+    <TableHeaderColumn style={{color:"white"}}>Your Bid</TableHeaderColumn>
+    <TableHeaderColumn style={{color:"white"}}>Status</TableHeaderColumn>
   </TableRow>
 </TableHeader>
-<TableBody>
+<TableBody displayRowCheckbox={false}>
 
 {this.props.data.map(row => {
     console.log("row",row);
    
-    if (row.bidderid ==11){
+    if (row.user_id ==1000){
        return <TableRow  >
    
-       <TableRowColumn >{row.projectid}</TableRowColumn>
-       <TableRowColumn >{row.ownerid}</TableRowColumn>
-       <TableRowColumn  >{row.bidderid}</TableRowColumn>
-       <TableRowColumn >{row.amount}</TableRowColumn>
-       
+       <TableRowColumn >{row.name}</TableRowColumn>
+       <TableRowColumn >{row.username}</TableRowColumn>
+       <TableRowColumn  >{row.budget}</TableRowColumn>
+       <TableRowColumn >{row.bidamount}</TableRowColumn>
+       <TableRowColumn >
+       <Button color="info">on Review</Button></TableRowColumn>
        </TableRow>
    
    }}
@@ -107,7 +113,7 @@ const mapStateToProps = (user) => {
 // //     return {data,userid};
 //   }
 return{
-    data: user.user.user.myprojectIndividualDesc,
+    data: user.user.user.projectList,
     //  name: user.user.user.myprojectIndividualDesc.data.name,
     //  details: user.user.user.myprojectIndividualDesc.data.details,
     //  projectid: user.user.user.myprojectIndividualDesc.data.name,

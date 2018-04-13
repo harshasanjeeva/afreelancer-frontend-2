@@ -128,8 +128,8 @@ const mapStateToProps = (user) => {
           email: user.user.user.email,
           userid: user.user.user.userid,
           isLoggedIn: user.user.user.loggedin,
-          skills: user.user.user.profile[0].skills,
-          about: user.user.user.profile[0].about
+          skills: user.user.user.profile.skills,
+          about: user.user.user.profile.about
       };//{msg};
 //    }
   }

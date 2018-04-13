@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import history from './History';
-import { Button} from 'reactstrap';
+import { Col,Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import {connect} from 'react-redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import {projectDesc} from "../actions/useractions";
@@ -51,20 +51,31 @@ class ProjectItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      "projectIndividualData":""
+      "projectIndividualData":"",
+      "search":"",
+      "currentlydis":this.props.projectList,
+      "currentPage": 1,
+      "todosPerPage": 3
     };
+    this.handleClick = this.handleClick.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
   }
-//  TableRow1 = ({row}) => (
-//         <TableRow>
-//         <TableRowColumn key={row.name}>{row.name}</TableRowColumn>
-//         <TableRowColumn key={row.id}>{row.id}</TableRowColumn>
-//         <TableRowColumn key={row.price}>{row.price}</TableRowColumn>
-//       </TableRow>
-//       )
-// handleOnClick = () => {
-//   // since our views are dependent on `haveData` and `fetching`, we can just set those to false
 
-// }
+onInputChange(event){
+
+  // let newDisplay = _.filter(this.props.projectList,project=>project.skills.includes(event.target.value.toLowerCase()));
+  let newDisplay = this.props.projectList.filter(project=>project.skills.includes(event.target.value.toLowerCase()));
+  
+  
+  this.setState({
+    search:event.target.value,
+    currentlydis: newDisplay
+  });
+
+  console.log("search-->",this.state)
+}
+
+
 
     render() {
       if(this.props.status){
@@ -76,6 +87,29 @@ class ProjectItem extends Component {
 
         console.log("this.props.projectList",this.props.projectList);
       return (     
+        <div>
+        <Form>
+        <FormGroup row>
+        
+        <Label for="exampleSearch" style={{marginLeft:150}}>Search</Label>
+        <Col>
+        <Input type="search" name="search" id="exampleSearch" placeholder="search projects" style={{width:400}} onChange={(event) => {
+          
+          let newDisplay = this.props.projectList.filter(project=>project.skills.includes(event.target.value));
+  // console.log("filter=======>",this.props.projectList.filter(project=>project.skills.includes("Java")));
+  
+          this.setState({
+            search:event.target.value,
+            currentlydis: newDisplay
+          });
+        
+          console.log("search-->",this.state)
+                      
+        }}/>
+        </Col>
+        
+        </FormGroup>
+        </Form>
           <div style={{backgroundColor:"rgb(245, 239, 239)", width: "100%", height:"100%",position :"absolute" ,paddingTop:"20px"}}>
           <MuiThemeProvider>
           <Card style={{marginLeft: 30, marginRight:30}}>
@@ -91,11 +125,15 @@ class ProjectItem extends Component {
       <TableHeaderColumn style={{color:"white"}}>Bids</TableHeaderColumn>
       <TableHeaderColumn style={{color:"white"}}>Details</TableHeaderColumn>
     </TableRow>
+
   </TableHeader>
   <TableBody displayRowCheckbox={false}>
-  {this.props.projectList.map(row => {
+  {  this.state.currentlydis.map(row => {
     console.log("row",row);
-   return <TableRow  >
+   
+   
+   
+    return <TableRow  >
   <TableRowColumn key={row.name} style={{paddingRight:"0px"}}>{row.name}</TableRowColumn>
   <TableRowColumn key={row.details} style={{paddingLeft:"0px",paddingRight:"0px"}}>{row.details}</TableRowColumn>
   <TableRowColumn key={row.details} >{row.skills}</TableRowColumn>
@@ -123,6 +161,7 @@ class ProjectItem extends Component {
 
 </Card>
 </MuiThemeProvider>
+</div>
 </div>
       )}
     }

@@ -16,16 +16,7 @@ class Work extends Component {
         <h4>Home</h4>
 
         <div>
-        <Form>
-        <FormGroup row>
-        
-        <Label for="exampleSearch" style={{marginLeft:150}}>Search</Label>
-        <Col>
-        <Input type="search" name="search" id="exampleSearch" placeholder="search projects" style={{width:400}} />
-        </Col>
-        
-        </FormGroup>
-        </Form>
+
 
         <ProjectItem  />
         </div>

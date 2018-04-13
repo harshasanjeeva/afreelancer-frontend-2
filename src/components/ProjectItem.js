@@ -55,11 +55,23 @@ class ProjectItem extends Component {
       "search":"",
       "currentlydis":this.props.projectList,
       "currentPage": 1,
-      "todosPerPage": 3
+      "todosPerPage": 3,
+      "todos":['a','b','c','d']
     };
     this.handleClick = this.handleClick.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
   }
+
+  handleClick(event) {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
+  }
+
+
+
+
+
 
 onInputChange(event){
 
@@ -78,6 +90,38 @@ onInputChange(event){
 
 
     render() {
+      const todos = this.state.currentlydis;
+      const   currentPage  = this.state.currentPage;
+      const   todosPerPage  = this.state.todosPerPage;
+      // Logic for displaying todos
+      const indexOfLastTodo = currentPage * todosPerPage;
+      const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+      // const indexOfLastTodo = 2;
+      // const indexOfFirstTodo = 1;
+
+      console.log("indexOfLastTodo==>",indexOfLastTodo)
+      console.log("indexOfFirstTodo==>",this.state.todos)
+      const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
+
+
+      const pageNumbers = [];
+      for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
+        pageNumbers.push(i);
+      }
+  
+      const renderPageNumbers = pageNumbers.map(number => {
+        return (
+          <li
+            key={number}
+            id={number}
+            onClick={this.handleClick}
+          >
+            {number}
+          </li>
+        );
+      });
+
+
       if(this.props.status){
         console.log("Navigation for the project item desc")
         history.push('/ProjectItemDesc');
@@ -128,7 +172,7 @@ onInputChange(event){
 
   </TableHeader>
   <TableBody displayRowCheckbox={false}>
-  {  this.state.currentlydis.map(row => {
+  {  currentTodos.map((row) => {
     console.log("row",row);
    
    
@@ -158,10 +202,13 @@ onInputChange(event){
 
   </TableBody>
 </Table>
-
+<ul id="page-numbers">
+{renderPageNumbers}
+</ul>
 </Card>
 </MuiThemeProvider>
 </div>
+
 </div>
       )}
     }

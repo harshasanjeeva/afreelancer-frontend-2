@@ -18,6 +18,7 @@ import MyProjects from '../src/components/MyProjects';
 import MyBids from '../src/components/MyBids';
 import EditProfile from '../src/components/EditProfile';
 import CurrentWork from '../src/components/CurrentWork';
+import CurrentItemDesc from '../src/components/CurrentItemDesc';
 
 class App extends Component {
   render() {
@@ -40,7 +41,8 @@ class App extends Component {
       <Route exact path='/mybids' component={MyBids}/>
       <Route exact path='/editprofile' component={EditProfile}/>
       <Route exact path='/currentwork' component={CurrentWork}/>
-      
+      <Route exact path='/CurrentItemDesc' component={CurrentItemDesc}/>
+      /CurrentItemDesc
       </Switch>
       </Router>
       </div>

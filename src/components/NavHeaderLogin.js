@@ -18,15 +18,26 @@ class NavHeaderLogin extends Component {
         super(props);
     
         this.toggle = this.toggle.bind(this);
+        this.toggle1 = this.toggle1.bind(this);
         this.state = {
           isOpen: false,
-          dropdownOpen: false
+          isOpen1: false,
+          dropdownOpen: false,
+          dropdownOpen1:false
         };
       }
       toggle() {
         this.setState({
           isOpen: !this.state.isOpen,
-          dropdownOpen: !this.state.dropdownOpen
+          dropdownOpen: !this.state.dropdownOpen,
+          // dropdownOpen1:!this.state.dropdownOpen1
+        });
+      }
+
+      toggle1() {
+        this.setState({
+          isOpen1: !this.state.isOpen1,
+          dropdownOpen1: !this.state.dropdownOpen1
         });
       }
 
@@ -49,9 +60,25 @@ class NavHeaderLogin extends Component {
         <NavItem>
         <NavLink href="/projects/">Hire Freelancers</NavLink>
         </NavItem>
-        <NavItem>
-        <NavLink href="/work/">Work</NavLink>
-        </NavItem>
+
+        <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <DropdownToggle nav caret>
+        Work
+      </DropdownToggle>
+
+
+
+            <DropdownMenu>
+              <DropdownItem header>Options</DropdownItem>
+            
+              <DropdownItem href="/work/">Work</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem href="/currentwork/">Current Work</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+
+
+
 
         <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle nav caret>
@@ -61,8 +88,7 @@ class NavHeaderLogin extends Component {
               <DropdownItem header>Options</DropdownItem>
             
               <DropdownItem href="/myprojects/">Projects posted</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem href="/currentwork/">Current Work</DropdownItem>
+
             </DropdownMenu>
           </Dropdown>
 
@@ -75,9 +101,9 @@ class NavHeaderLogin extends Component {
         </NavItem>
         
         </Nav>
-        
+    
+            
         <NavbarToggler onClick={this.toggle} />
-        
         
         
       

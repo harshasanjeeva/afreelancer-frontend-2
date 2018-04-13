@@ -30,7 +30,7 @@ class CurrentWork extends Component {
 render() {
   if(this.props.status){
     console.log("Navigation for the project item desc")
-    history.push('/MyProjectItemDesc');
+    history.push('/CurrentItemDesc');
   }
 
   if(!this.props.status){ 
@@ -50,7 +50,7 @@ adjustForCheckbox={false}>
   <TableHeaderColumn style={{color:"white",paddingRight:"0px"}}>Project Name</TableHeaderColumn>
   <TableHeaderColumn style={{color:"white",paddingLeft:"0px",paddingRight:"0px"}}>Project Description</TableHeaderColumn>
   <TableHeaderColumn style={{color:"white"}}>Project Budget</TableHeaderColumn>
-  <TableHeaderColumn style={{color:"white"}}>Number of Bids</TableHeaderColumn>
+
   <TableHeaderColumn style={{color:"white"}}>Details</TableHeaderColumn>
 </TableRow>
 </TableHeader>
@@ -65,7 +65,7 @@ return(
  <TableRowColumn key={row.name} style={{paddingRight:"0px"}}>{row.name}</TableRowColumn>
  <TableRowColumn key={row.details} style={{paddingLeft:"0px",paddingRight:"0px"}}>{row.details}</TableRowColumn>
  <TableRowColumn key={row.budget} >{row.budget}</TableRowColumn>
- <TableRowColumn key={row.user_id} >{row.bids}</TableRowColumn>
+
  <TableRowColumn key={row.projectid}>
        <Button color="success"
            onClick={() => {
@@ -76,7 +76,7 @@ return(
             // console.log("this.state--->",this.state)
               this.props.projectDesc(row);
             //  this.props.status = true
-             history.push('/MyProjectItemDesc');
+             history.push('/CurrentItemDesc');
                  }}>Details </Button>
  </TableRowColumn>
  </TableRow> )

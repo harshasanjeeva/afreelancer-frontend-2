@@ -82,7 +82,7 @@ adjustForCheckbox={false}>
 
 {this.props.projectList.map(row => {
 console.log("row",row);
-if (row.user_id ==7109){
+if (row.user_id == this.props.user_id){
 return(
 
     <TableRow  >
@@ -138,8 +138,9 @@ return(
       if(user.user != null) {
        const status = false
        // const status =  user.user.myuserindiv.myprojectIndividualStatus;
+       const user_id = user.user.user.profile.user_id;
         const projectList = user.user.user.projectList;
-        return {status, projectList};
+        return {status, projectList,user_id};
     }
     }
 export default connect(mapStateToProps,mapDispatchToProps)(MyProjectItem);

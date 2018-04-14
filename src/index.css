@@ -17,3 +17,6 @@ body {
   cursor: pointer;
 }
 
+#label-left{
+  text-align: left !important;
+}

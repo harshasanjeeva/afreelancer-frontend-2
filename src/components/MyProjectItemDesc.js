@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NavHeader from './NavHeader';
 import { Route, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
-import { Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Alert, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText, Fade } from 'reactstrap';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle,strong} from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import NavHeaderLogin from './NavHeaderLogin';
@@ -25,12 +25,12 @@ class MyProjectItemDesc extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          userid:"",
+          userid:this.props.user_id,
           projectid:this.props.projectid,
           ownername:this.props.username,
           bidwinnername:"",
-          bidwinnerid:""
-
+          bidwinner:"",
+          hired:1
           };
       }
 
@@ -139,6 +139,9 @@ class MyProjectItemDesc extends Component {
 
 
 <br />
+
+
+{this.state.hired?
 <MuiThemeProvider>
        
 
@@ -171,13 +174,19 @@ adjustForCheckbox={false}>
         this.setState({
           // userid:this.props.name,
 
-          bidwinnername:row.name,
-          bidwinnerid:row.bidderid
-        });
+          hired:0,
+          bidwinner:row
+        },() => {
+          // only now the state was updated
+          console.log("Data is here", this.state); 
+          this.props.hired(this.state)
+       });
  
         //  setTimeout(function(state){
           console.log("this.state--->",this.state)
-          // this.props.hire1(this.state)
+          console.log("this.stateasdasd--->",row.name)
+          console.log("this.stateasdasd--->",row.bidderid)
+         
         //  },100);
        
         
@@ -193,6 +202,15 @@ adjustForCheckbox={false}>
 </TableBody>
 </Table>
 </MuiThemeProvider>
+:
+<div>
+
+<Button color="success"
+onClick={() => {
+
+  history.push('/paymentpage');
+      }}>Make Payment</Button>
+</div>}
 </Container>
     </Card>
        
@@ -202,10 +220,12 @@ adjustForCheckbox={false}>
    )
   }
 }
+
+
 const mapDispatchToProps = (dispatch) => {
   console.log("dispatch",dispatch)
   return {
-    hire1 : (data) => dispatch(hire(data))
+    hired : (data) => dispatch(hire(data))
   }
 }
 
@@ -214,14 +234,40 @@ const mapStateToProps = (user) => {
 //   if(user.user.user.myprojectIndividualStatus) {
 // //     const data = user.user.user.projectIndividualDesc;
 // //     const userid = user.user.user.state.userid;
-//     console.log("user.user in myprojectDescitemmmmm--->")
-// //     return {data,userid};
+    console.log("user.user in myprojectDescitemmmmm--->",user.user.myuserindiv.myprojectIndividualDesc.data.projectid)
+    console.log("user.user in myprojectDescitemmmmm--->",user.user.projectstatus.status.status)
+if(user.user.projectstatus){
+  if( user.user.projectstatus.status.projectid == user.user.myuserindiv.myprojectIndividualDesc.data.projectid ){
+    let status = user.user.projectstatus.status.status;
+    console.log("forund projectid-->")
+    return{
+      //data: user.user.myuserindiv.myprojectIndividualDesc.result,
+      //changed on 04/12
+      data: user.user.user.bidlist,
+      user_id: user.user.user.profile.user_id,
+      name: user.user.myuserindiv.myprojectIndividualDesc.data.name,
+       details: user.user.myuserindiv.myprojectIndividualDesc.data.details,
+       projectid: user.user.myuserindiv.myprojectIndividualDesc.data.projectid,
+       ownerid: user.user.myuserindiv.myprojectIndividualDesc.data.user_id,
+       username: user.user.myuserindiv.myprojectIndividualDesc.data.username,
+       budget: user.user.myuserindiv.myprojectIndividualDesc.data.budget,
+       ownerid: user.user.myuserindiv.myprojectIndividualDesc.data.user_id,
+        bids: user.user.myuserindiv.myprojectIndividualDesc.data.bids,
+        skills: user.user.myuserindiv.myprojectIndividualDesc.data.skills,
+        status:!status
+  }
+  }
+}
+
+// }
+//status:user.user.projectstatus.status.status
+
 //   }
 return{
     //data: user.user.myuserindiv.myprojectIndividualDesc.result,
     //changed on 04/12
     data: user.user.user.bidlist,
-    
+    user_id: user.user.user.profile.user_id,
     name: user.user.myuserindiv.myprojectIndividualDesc.data.name,
      details: user.user.myuserindiv.myprojectIndividualDesc.data.details,
      projectid: user.user.myuserindiv.myprojectIndividualDesc.data.projectid,
@@ -231,6 +277,7 @@ return{
      ownerid: user.user.myuserindiv.myprojectIndividualDesc.data.user_id,
       bids: user.user.myuserindiv.myprojectIndividualDesc.data.bids,
       skills: user.user.myuserindiv.myprojectIndividualDesc.data.skills,
+      status:1
 }
 }
     

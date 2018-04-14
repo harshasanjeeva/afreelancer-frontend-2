@@ -12,6 +12,8 @@ export const MY_PROJECT_ITEM_DESC = 'MY_PROJECT_ITEM_DESC';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
 export const UPLOAD_PIC = 'UPLOAD_PIC';
 export const HIRE = 'HIRE';
+export const PAYMENT = 'PAYMENT';
+
 // export const USER_STAR_ACT = 'USER_STAR_ACT';
 
 
@@ -420,9 +422,52 @@ export function hire2(resData) {
 	
 	console.log("Hire in actions2->",resData)
 		return {
-			// type: PROJECT_BID,
-			// msg:resData.message,
+			type: HIRE,
+			msg: resData.message,
+			hirestatus: resData.projectstatus
 		}
 		
 	}
 //=================ProjectBid================end
+
+
+
+
+
+
+
+
+
+//==================payment==============================start
+export function payment(userDeails) {
+	console.log("in projectDesc",userDeails);
+	return function(dispatch){
+		try {
+		API.payment(userDeails)
+		.then((response) => {
+			try {
+				console.log("in projectDesc 2");
+				dispatch(payment2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function payment2(resData) {
+	
+	console.log("Hire in actions2->",resData)
+		return {
+			type: PAYMENT,
+
+		}
+		
+	}
+//==================Payment==============================start

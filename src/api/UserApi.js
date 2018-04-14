@@ -218,3 +218,28 @@ export const hire = (payload) =>
             console.log("This is error");
             return error;
         });
+
+
+
+
+//=====================================Hire=======================
+export const payment = (payload) =>
+    fetch(`${api}/users/pay`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("payload",response);
+          //  console.log(response.username+" "+response.password);
+            
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });

@@ -18,12 +18,15 @@ class NavHeaderLogin extends Component {
         super(props);
     
         this.toggle = this.toggle.bind(this);
-        this.toggle1 = this.toggle1.bind(this);
+        this.toggles = this.toggles.bind(this);
+        this.togglesthree = this.togglesthree.bind(this);
         this.state = {
           isOpen: false,
-          isOpen1: false,
+          isOpens: false,
+          isOpensthree: false,
           dropdownOpen: false,
-          dropdownOpen1:false
+          dropdownOpens:false,
+          dropdownOpensthree:false
         };
       }
       toggle() {
@@ -34,13 +37,19 @@ class NavHeaderLogin extends Component {
         });
       }
 
-      toggle1() {
+      toggles() {
         this.setState({
-          isOpen1: !this.state.isOpen1,
-          dropdownOpen1: !this.state.dropdownOpen1
+          isOpens: !this.state.isOpens,
+          dropdownOpens: !this.state.dropdownOpens
         });
       }
 
+      togglesthree() {
+        this.setState({
+          isOpensthree: !this.state.isOpensthree,
+          dropdownOpensthree: !this.state.dropdownOpensthree
+        });
+      }
 
       // <NavItem>
       // <NavLink href="/myprojects/">My Projects</NavLink> 
@@ -64,7 +73,7 @@ class NavHeaderLogin extends Component {
         <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle nav caret>
         Work
-      </DropdownToggle>
+        </DropdownToggle>
 
 
 
@@ -80,7 +89,7 @@ class NavHeaderLogin extends Component {
 
 
 
-        <Dropdown nav isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+        <Dropdown nav isOpen={this.state.dropdownOpens} toggle={this.toggles}>
         <DropdownToggle nav caret>
         My Projects
       </DropdownToggle>
@@ -91,6 +100,22 @@ class NavHeaderLogin extends Component {
 
             </DropdownMenu>
           </Dropdown>
+
+
+          <Dropdown nav isOpen={this.state.dropdownOpensthree} toggle={this.togglesthree}>
+          <DropdownToggle nav caret>
+          Payments
+        </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem header>Options</DropdownItem>
+              
+                <DropdownItem href="/paymentpage">Make Payments</DropdownItem>
+
+                <DropdownItem href="/">Withdraw Payments</DropdownItem>
+
+                <DropdownItem href="/">Trasactions</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
 
 
 

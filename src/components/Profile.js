@@ -7,6 +7,8 @@ import { Jumbotron,Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle} f
 import NavHeaderLogin from './NavHeaderLogin';
 import history from './History'
 import { Link } from 'react-router-dom';
+import {getProfile} from "../actions/useractions";
+
 class Profile extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +24,7 @@ class Profile extends Component {
 
 callworks(){
    // window.location.href = "http://localhost:3000/work"
-   history.push('/projects');
+   history.push('/work');
 }
 
 callEditProfile(){
@@ -58,7 +60,7 @@ callEditProfile(){
             
             width: 400,
             margin: 'auto',
-            height: 530,
+            height: 430,
 }}>
             <img src={require('./image3.png')} alt="Card image cap" style={{ 
             
@@ -89,25 +91,13 @@ callEditProfile(){
             </Row>
             
 
-            <Row>
-            <Col xs='5'>Skills:
-            </Col>
-            <Col>
-            {this.props.skills}
-            </Col>
-            </Row>
 
-            <Row>
-
-            <Col ><p style={{color:"#959292"}}>
-            {this.props.about}</p>
-            </Col>
-            </Row>
             </CardBody>
-            <br />
+      
             <Button onClick={() => {
 
                 this.callEditProfile();
+                this.props.get({"userid":this.props.userid})
                 
               }} >Edit Profile</Button>
         </Card>
@@ -128,9 +118,35 @@ const mapStateToProps = (user) => {
           email: user.user.user.email,
           userid: user.user.user.userid,
           isLoggedIn: user.user.user.loggedin,
-          skills: user.user.user.profile.skills,
-          about: user.user.user.profile.about
-      };//{msg};
-//    }
+
+      };
+
   }
-export default  withRouter(connect(mapStateToProps)(Profile));
+
+
+  const mapDispatchToProps = (dispatch) => {
+    //console.log("dispatch",dispatch)
+    return {
+        get : (data) => dispatch(getProfile(data))
+    }
+    }
+
+
+export default  withRouter(connect(mapStateToProps,mapDispatchToProps)(Profile));
+
+
+
+// <Row>
+// <Col xs='5'>Skills:
+// </Col>
+// <Col>
+// {this.props.skills}
+// </Col>
+// </Row>
+
+// <Row>
+
+// <Col ><p style={{color:"#959292"}}>
+// {this.props.about}</p>
+// </Col>
+// </Row>

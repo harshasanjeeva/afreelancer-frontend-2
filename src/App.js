@@ -21,7 +21,7 @@ import CurrentWork from '../src/components/CurrentWork';
 import CurrentItemDesc from '../src/components/CurrentItemDesc';
 import paymentpage from '../src/components/PaymentPage';
 
-
+import Withdraw from '../src/components/Withdraw';
 
 class App extends Component {
   render() {
@@ -46,6 +46,7 @@ class App extends Component {
       <Route exact path='/currentwork' component={CurrentWork}/>
       <Route exact path='/CurrentItemDesc' component={CurrentItemDesc}/>
       <Route exact path='/paymentpage' component={paymentpage}/>
+      <Route exact path='/Withdraw' component={Withdraw}/>
       
       </Switch>
       </Router>

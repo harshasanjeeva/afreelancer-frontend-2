@@ -55,7 +55,7 @@ class ProjectItem extends Component {
       "search":"",
       "currentlydis":this.props.projectList,
       "currentPage": 1,
-      "todosPerPage": 3,
+      "todosPerPage": 10,
       "todos":['a','b','c','d']
     };
     this.handleClick = this.handleClick.bind(this);
@@ -132,10 +132,11 @@ onInputChange(event){
         console.log("this.props.projectList",this.props.projectList);
       return (     
         <div>
+        <hr/>
         <Form>
         <FormGroup row>
         
-        <Label for="exampleSearch" style={{marginLeft:150}}>Search</Label>
+        <h6 for="exampleSearch" style={{marginLeft:150}}>Search</h6>
         <Col>
         <Input type="search" name="search" id="exampleSearch" placeholder="search projects" style={{width:400}} onChange={(event) => {
           
@@ -151,7 +152,49 @@ onInputChange(event){
                       
         }}/>
         </Col>
+        <Col>
+        <Button    
+
+        onClick={() => {
+          var arr = this.props.projectList;
+        arr.sort(function(a, b) {
+            return parseFloat(a.budget) - parseFloat(b.budget);
+        });
+  // console.log("filter=======>",this.props.projectList.filter(project=>project.skills.includes("Java")));
+  
+          this.setState({
+            
+            currentlydis: arr
+          });
         
+          console.log("search-->",this.state)
+                      
+        }}
+        
+        >Sort /\</Button>
+
+        <Button    
+style={{"marginLeft":"10px"}}
+        onClick={() => {
+          var arr = this.props.projectList;
+        arr.sort(function(a, b) {
+            return parseFloat(b.budget) - parseFloat(a.budget);
+        });
+  // console.log("filter=======>",this.props.projectList.filter(project=>project.skills.includes("Java")));
+  
+          this.setState({
+            
+            currentlydis: arr
+          });
+        
+          console.log("search-->",this.state)
+                      
+        }}
+        
+        >Sort \/</Button>
+
+
+        </Col>
         </FormGroup>
         </Form>
           <div style={{backgroundColor:"rgb(245, 239, 239)", width: "100%", height:"100%",position :"absolute" ,paddingTop:"20px"}}>

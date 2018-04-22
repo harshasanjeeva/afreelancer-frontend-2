@@ -83,6 +83,8 @@ class NavHeaderLogin extends Component {
               <DropdownItem href="/work/">Work</DropdownItem>
               <DropdownItem divider />
               <DropdownItem href="/currentwork/">Current Work</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem href="/work/">Relevant Projects</DropdownItem>
             </DropdownMenu>
           </Dropdown>
 
@@ -111,9 +113,9 @@ class NavHeaderLogin extends Component {
               
                 <DropdownItem href="/paymentpage">Make Payments</DropdownItem>
 
-                <DropdownItem href="/">Withdraw Payments</DropdownItem>
+                <DropdownItem href="/Withdraw">Withdraw Payments</DropdownItem>
 
-                <DropdownItem href="/">Trasactions</DropdownItem>
+          
               </DropdownMenu>
             </Dropdown>
 

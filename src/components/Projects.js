@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody,
+import {Alert, Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle,Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import NavHeader from './NavHeader';
 import {projectProposal} from "../actions/useractions";
@@ -21,7 +21,9 @@ class Projects extends Component {
       "projectDescription":"",
       "projectBudget":"",
       "userid":"",
-      "projectid":""
+      "projectid":"",
+      "username":this.props.username,
+      "skills":""
     };
 
   }
@@ -48,6 +50,8 @@ class Projects extends Component {
   
   <NavHeaderLogin />
       <div className="container-fluid" >
+      {this.props.expression ? <Alert color="success">{this.props.expression}</Alert> : ''}
+      
       <Card>
       <CardBody>
       <CardTitle>Tell us what you need done</CardTitle>
@@ -98,7 +102,9 @@ class Projects extends Component {
       <FormGroup row>
       <p>Skills Required</p>
       <Input type="text" name="skills" id="skills" placeholder="e.g. Node.js, Java" onChange={(event) => {
-
+        this.setState({
+          skills: event.target.value
+                        });
                     }} />
 
       </FormGroup>
@@ -156,10 +162,13 @@ const mapDispatchToProps = (dispatch) => {
 
 
 const mapStateToProps = (user) => {
+  console.log("user_id",user.user)
   if(user.user != null) {
     const isLoggedIn = user.user.user.loggedin;
-    const userid = user.user.user.userid
-    return {isLoggedIn,userid};
+    const userid = user.user.user.userid;
+    const expression =user.user.projectpost.projectpostmessage;
+    const username = user.user.user.username
+    return {isLoggedIn,userid,expression,username};
 }
 }
 

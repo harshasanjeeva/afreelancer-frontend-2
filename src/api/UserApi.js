@@ -1,7 +1,9 @@
 const api = process.env.REACT_APP_CONTACTS_API_URL || 'http://localhost:3001'
+// const api = 'http://ec2-18-188-210-86.us-east-2.compute.amazonaws.com:3001'
 
 const headers = {
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+
 };
 
 //================================signup===========================
@@ -237,6 +239,72 @@ export const payment = (payload) =>
             console.log("payload",response);
           //  console.log(response.username+" "+response.password);
             
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+//=====================================actionbal=======================
+export const actionbal = (payload) =>
+    fetch(`${api}/users/freebal`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("payload",response);
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+
+//=====================================actionwithdraw=======================
+export const actionwithdraw = (payload) =>
+    fetch(`${api}/users/withdraw`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("payload",response);            
+            return response;
+        })
+        .catch(error => {
+            console.log("This is error");
+            return error;
+        });
+
+
+
+
+//=====================================get projects=======================
+export const getProfile = (payload) =>
+    fetch(`${api}/users/getprofile`, {
+        method: 'POST',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        credentials:'include',
+        body: JSON.stringify(payload)
+    }).then(response => response.json())
+        .then(response => {
+            console.log("payload",response);            
             return response;
         })
         .catch(error => {

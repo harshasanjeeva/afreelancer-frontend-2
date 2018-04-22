@@ -1,6 +1,9 @@
 import * as API from '../api/UserApi';
 import history from '../components/History';
 
+
+export const ACTIONBAL = 'ACTIONBAL';
+export const ACTIONWITHDRAW = 'ACTIONWITHDRAW';
 export const USER_SIGNUP = 'USER_SIGNUP';
 export const USER_SIGNIN = 'USER_SIGNIN';
 export const PROJECT_PROPOSAL = 'PROJECT_PROPOSAL';
@@ -12,8 +15,8 @@ export const MY_PROJECT_ITEM_DESC = 'MY_PROJECT_ITEM_DESC';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
 export const UPLOAD_PIC = 'UPLOAD_PIC';
 export const HIRE = 'HIRE';
-export const PAYMENT = 'PAYMENT';
-
+export const PAYMENT = 'PAYMENT'; 
+export const GET_PROJECTS = 'GET_PROJECTS';
 // export const USER_STAR_ACT = 'USER_STAR_ACT';
 
 
@@ -143,7 +146,8 @@ export function projectProposal2(resData) {
 		return {
 			type: PROJECT_PROPOSAL,
 			msg:"Project",
-			user:resData
+			data:resData,
+			status:true,
 		}
 		
 	}
@@ -217,6 +221,8 @@ export function ProjectBid2(resData) {
 		return {
 			type: PROJECT_BID,
 			msg:resData.message,
+			data:resData,
+			status:true,
 		}
 		
 	}
@@ -471,3 +477,121 @@ export function payment2(resData) {
 		
 	}
 //==================Payment==============================start
+
+
+
+
+
+
+
+
+//==================Hire==============================start
+export function actionbal(userDeails) {
+	console.log("in projectDesc",userDeails);
+	return function(dispatch){
+		try {
+		API.actionbal(userDeails)
+		.then((response) => {
+			try {
+				console.log("in projectDesc 2");
+				dispatch(actionbal2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function actionbal2(resData) {
+	
+	console.log("Hire in actions2->",resData)
+		return {
+			type: ACTIONBAL,
+			data: resData.amount
+
+		}
+		
+	}
+//=================ProjectBid================end
+
+
+
+
+//==================actionwithdraw==============================start
+export function actionwithdraw(userDeails) {
+	console.log("in projectDesc",userDeails);
+	return function(dispatch){
+		try {
+		API.actionwithdraw(userDeails)
+		.then((response) => {
+			try {
+				console.log("in projectDesc 2");
+				dispatch(actionwithdraw2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function actionwithdraw2(resData) {
+	
+	console.log("Hire in actions2->",resData)
+		return {
+			type: HIRE,
+
+		}
+		
+	}
+//=================ProjectBid================end
+
+
+
+
+//==================get - projects==============================start
+export function getProfile(userDeails) {
+
+	return function(dispatch){
+		try {
+		API.getProfile(userDeails)
+		.then((response) => {
+			try {
+				console.log("in the get projects");
+				dispatch(getProfile2(response))			
+		}
+		catch(error){
+console.log(error)
+		}
+		});
+} catch (error) {
+	console.log(error)
+}
+	}
+
+};
+
+
+export function getProfile2(resData) {
+	
+	console.log("Hire in actions2->",resData)
+		return {
+			type: GET_PROJECTS,
+			data:resData,
+			status: true,
+
+		}
+		
+	}
+//=================get - projects================end

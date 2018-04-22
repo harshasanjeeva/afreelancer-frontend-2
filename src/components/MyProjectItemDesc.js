@@ -28,6 +28,7 @@ class MyProjectItemDesc extends Component {
           userid:this.props.user_id,
           projectid:this.props.projectid,
           ownername:this.props.username,
+          email:this.props.email,
           bidwinnername:"",
           bidwinner:"",
           hired:1
@@ -204,7 +205,9 @@ adjustForCheckbox={false}>
 </MuiThemeProvider>
 :
 <div>
-
+<Button >Download the file!</Button>
+<br />
+<hr/>
 <Button color="success"
 onClick={() => {
 
@@ -231,6 +234,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (user) => {
   console.log("project uitem descasdsfdsfdasd=---->",user.user)
+  console.log("email",user.user.user.email)
 //   if(user.user.user.myprojectIndividualStatus) {
 // //     const data = user.user.user.projectIndividualDesc;
 // //     const userid = user.user.user.state.userid;
@@ -244,7 +248,8 @@ if(user.user.projectstatus){
       //data: user.user.myuserindiv.myprojectIndividualDesc.result,
       //changed on 04/12
       data: user.user.user.bidlist,
-      user_id: user.user.user.profile.user_id,
+      user_id: user.user.user.user_id,
+      email:user.user.user.email,
       name: user.user.myuserindiv.myprojectIndividualDesc.data.name,
        details: user.user.myuserindiv.myprojectIndividualDesc.data.details,
        projectid: user.user.myuserindiv.myprojectIndividualDesc.data.projectid,
@@ -267,7 +272,7 @@ return{
     //data: user.user.myuserindiv.myprojectIndividualDesc.result,
     //changed on 04/12
     data: user.user.user.bidlist,
-    user_id: user.user.user.profile.user_id,
+    user_id: user.user.user.user_id,
     name: user.user.myuserindiv.myprojectIndividualDesc.data.name,
      details: user.user.myuserindiv.myprojectIndividualDesc.data.details,
      projectid: user.user.myuserindiv.myprojectIndividualDesc.data.projectid,
@@ -277,6 +282,7 @@ return{
      ownerid: user.user.myuserindiv.myprojectIndividualDesc.data.user_id,
       bids: user.user.myuserindiv.myprojectIndividualDesc.data.bids,
       skills: user.user.myuserindiv.myprojectIndividualDesc.data.skills,
+      email:user.user.user.email,
       status:1
 }
 }

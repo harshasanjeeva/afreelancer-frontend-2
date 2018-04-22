@@ -16,10 +16,12 @@ class ProjectItemDesc extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "userid":"",
+            "userid":this.props.userid,
             "projectid":"",
             "bidderid":"",
-            "amount":""
+            "amount":"",
+            "biddername":this.props.biddername,
+            "period":""
           };
       }
 
@@ -29,6 +31,7 @@ class ProjectItemDesc extends Component {
     return (
         <div >
       <NavHeaderLogin />
+      {this.props.expression ? <Alert color="success">{this.props.expression}</Alert> : ''}
       <div style={{ backgroundColor:"rgb(245, 239, 239)", width: "100%", height:"100%",position :"absolute"}}>
         <Card style={{ 
             
@@ -136,7 +139,10 @@ class ProjectItemDesc extends Component {
 <Row>
   <Col xs="3" >           <Input type="number" onChange={(event) => {
     console.log("userid==>",this.props.userid);
+    this.setState({
+      period:event.target.value,
 
+    });
     console.log(this.state);
 }}/></Col>
 
@@ -177,13 +183,17 @@ class ProjectItemDesc extends Component {
 
 
 const mapStateToProps = (user) => {
-  console.log("project uitem desc=---->",user)
+  console.log("project uitem desc=---->",user.user.projectbid.projectbidmessage)
+  console.log("project uitem desc=---->",)
+
   if(user.user.userindiv.projectIndividualStatus) {
     const data = user.user.userindiv.projectIndividualDesc;
    // const userid = user.user.user.state.user.userid;
-   const userid = user.user.userindiv.useridindi;
+   const userid = user.user.user.userid;
+   const biddername = user.user.user.username;
+   const expression = user.user.projectbid.projectbidmessage; 
    console.log("userid in projectItemDesc----->",userid)
-    return {data,userid};
+    return {data,userid,biddername,expression};
   }
 }
     

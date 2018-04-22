@@ -173,9 +173,9 @@ const mapDispatchToProps =(dispatch)=> {
     };
 }
 const mapStateToProps =(user)=> {
-     console.log(user.user.user.profile.user_id);
+     console.log(user.user.user.user_id);
     return {
-        user_id: user.user.user.profile.user_id,
+        user_id: user.user.user.user_id,
         status : "False",
         message : "success"
     };

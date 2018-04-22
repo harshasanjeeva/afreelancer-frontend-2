@@ -138,7 +138,7 @@ return(
       if(user.user != null) {
        const status = false
        // const status =  user.user.myuserindiv.myprojectIndividualStatus;
-       const user_id = user.user.user.profile.user_id;
+       const user_id = user.user.user.user_id;
         const projectList = user.user.user.projectList;
         return {status, projectList,user_id};
     }

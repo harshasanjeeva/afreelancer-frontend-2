@@ -1,4 +1,4 @@
-import {HIRE, USER_SIGNIN,USER_SIGNUP,PROJECT_DESC,USER_SIGNOUT,PROJECT_BID,MY_PROJECT_DESC,MY_PROJECT_ITEM_DESC} from "../actions/useractions";
+import {ACTIONBAL,GET_PROJECTS,HIRE,PROJECT_PROPOSAL, USER_SIGNIN,USER_SIGNUP,PROJECT_DESC,USER_SIGNOUT,PROJECT_BID,MY_PROJECT_DESC,MY_PROJECT_ITEM_DESC} from "../actions/useractions";
 
 const initialState = {
        
@@ -113,7 +113,103 @@ const user = (state = initialState, action) => {
        
                        }
        
-                       break;          
+                       break;        
+                       
+                       PROJECT_PROPOSAL
+
+     //=========================PROJECT_PROPOSAL           
+     case PROJECT_PROPOSAL :
+     
+              if(action.status) {
+                console.log("reducer-->action--->PROJECT_DESC 2",action.data)
+               
+                return {
+                   ...state,
+                   "projectpost":{
+                             "projectpostmessage": action.data.message,
+   
+                        }
+                };
+
+            }
+            else {
+                console.log(action.msg);
+                return {
+                   ...state,
+
+                };
+
+            }
+
+            break;  
+
+     //=========================PROJECT_BID===============================================          
+     case PROJECT_BID :
+     
+              if(action.status) {
+                console.log("reducer-->action--->PROJECT_DESC 2",action.data)
+               
+                return {
+                   ...state,
+                   "projectbid":{
+                             "projectbidmessage": action.data.message,
+   
+                        }
+                };
+
+            }
+            else {
+                console.log(action.msg);
+                return {
+                   ...state,
+
+                };
+
+            }
+
+            break;  
+
+
+            
+     //=========================GET_PROJECTS===============================================          
+     case GET_PROJECTS :
+     
+              if(action.status) {
+                console.log("reducer-->action--->PROJECT_DESC 2",action.data)
+               
+                return {
+                   ...state,
+                   "profile":{
+                             "profile": action.data.profile,
+                        }
+                };
+
+            }
+            else {
+                console.log(action.msg);
+                return {
+                   ...state,
+                };
+
+            }
+
+            break;  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      //===================================signout========================
      case USER_SIGNOUT :
      console.log("reducer-->action--->PROJECT_DESC")
@@ -143,33 +239,30 @@ const user = (state = initialState, action) => {
             break;     
 
 
-//===================================PROJECT_BID========================
-    //  case PROJECT_BID :
-    //  console.log("reducer-->action--->PROJECT_BID")
-    //           if(action.status) {
-    //             console.log("reducer-->action--->PROJECT_BID 2",action.data)
-    //             console.log("state---project-->",state)
-    //             return {
-    //                ...state,
-    //                "user":{
-    //                      "loggedin" : false
-    //                     }
-    //             };
+//===================================ACTIONBAL========================
+     case ACTIONBAL :
+              if(action) {
+                console.log("reducer-->action--->ACTIONBAL",action.data)
+                console.log("state---project-->",state)
+                return {
+                   ...state,
+                   "withdraw":{                            
+                    "amount" : action.data,
+       
+                }
+                };
 
-    //         }
-    //         else {
-    //             console.log(action.msg);
-    //             return {
-    //                ...state,
-    //                "user":{                            
-    //                         "loggedin" : false,
-    //                         "signinmsg" : action.msg
-    //                     }
-    //             };
+            }
+            else {
+                console.log(action.msg);
+                return {
+                   ...state,
 
-    //         }
+                };
 
-    //         break;     
+            }
+
+            break;     
 
     //=========================PROJECT_DESC           
     case MY_PROJECT_DESC :

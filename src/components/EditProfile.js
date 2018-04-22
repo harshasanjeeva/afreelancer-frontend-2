@@ -29,12 +29,12 @@ class EditProfile extends Component {
 
 callworks(){
    // window.location.href = "http://localhost:3000/work"
-   history.push('/projects');
+   history.push('/work');
 }
 
 callEditProfile(){
   // window.location.href = "http://localhost:3000/work"
-  history.push('/editprofile');
+  history.push('/work');
 }
   render() {
       console.log("userrssss",this.props.username)
@@ -171,23 +171,37 @@ console.log("filllle==>",payload)
   }
 }
 const mapStateToProps = (user) => {
-    // if(user.user != null) {
-    //    const isLoggedIn = user.user.user.loggedin;
-    //   const msg = user.user.user.basic;
-      
-    //   user.user.user.signinmsg = "";
-    console.log("---->",user.user.user.profile)
+  console.log("---->",user.user)
+    if(user.user.profile){
+      console.log("---->",user.user.profile.profile.name)
       return {
-         name: user.user.user.profile.name,
-          email: user.user.user.profile.email,
+         name: user.user.profile.profile.name,
+          email: user.user.profile.profile.email,
           userid: user.user.user.userid,
           isLoggedIn: user.user.user.loggedin,
-          phone: user.user.user.profile.phone,
-          about: user.user.user.profile.about,
-          skills: user.user.user.profile.skills
-          //username:user.user.user.profile.name,
+          phone: user.user.profile.profile.phone,
+          about: user.user.profile.profile.about,
+          skills: user.user.profile.profile.skills,
+          
 
-      };//{msg};
+      }
+    }
+    else
+    {
+      return{
+        name: "",
+        email: "",
+        userid: user.user.user.userid,
+        isLoggedIn: true,
+        phone: "",
+        about: "",
+        skills: ""
+
+      }
+
+    }
+    
+
 //    }
   }
 

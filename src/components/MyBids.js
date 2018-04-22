@@ -75,7 +75,7 @@ adjustForCheckbox={false}>
 {this.props.data.map(row => {
     console.log("row",row);
    
-    if (row.user_id ==1000){
+    if (row.user_id ==this.props.user_id){
        return <TableRow  >
    
        <TableRowColumn >{row.name}</TableRowColumn>
@@ -114,6 +114,7 @@ const mapStateToProps = (user) => {
 //   }
 return{
     data: user.user.user.projectList,
+    user_id: user.user.user.user_id
     //  name: user.user.user.myprojectIndividualDesc.data.name,
     //  details: user.user.user.myprojectIndividualDesc.data.details,
     //  projectid: user.user.user.myprojectIndividualDesc.data.name,
